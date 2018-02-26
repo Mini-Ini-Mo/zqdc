@@ -38,7 +38,7 @@ class Cate extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => '分类',
         ];
     }
 }
