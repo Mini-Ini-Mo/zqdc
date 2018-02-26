@@ -1,0 +1,63 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "zq_special".
+ *
+ * @property int $id
+ * @property string $title 标题
+ * @property int $expert_id 专家
+ * @property string $viewpoint 观点
+ * @property string $analysis 观点解析
+ * @property string $praise_num 点赞
+ * @property string $read_num 阅读
+ * @property int $status 0不显示 1显示
+ * @property int $created_at
+ * @property int $cate_id
+ */
+class Special extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'zq_special';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['expert_id', 'praise_num', 'read_num', 'created_at', 'cate_id'], 'integer'],
+            [['viewpoint', 'analysis'], 'required'],
+            [['viewpoint', 'analysis'], 'string'],
+            [['title'], 'string', 'max' => 255],
+            [['status'], 'string', 'max' => 4],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'title' => 'Title',
+            'expert_id' => 'Expert ID',
+            'viewpoint' => 'Viewpoint',
+            'analysis' => 'Analysis',
+            'praise_num' => 'Praise Num',
+            'read_num' => 'Read Num',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'cate_id' => 'Cate ID',
+        ];
+    }
+}

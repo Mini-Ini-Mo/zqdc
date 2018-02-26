@@ -1,0 +1,58 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "zq_expert".
+ *
+ * @property int $id
+ * @property string $name 名称
+ * @property string $introduction 简介
+ * @property string $head_img 头像
+ * @property string $read_num 阅读量
+ * @property string $praise_num 点赞
+ * @property int $created_at
+ * @property string $post_num 发文数量
+ */
+class Expert extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'zq_expert';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['name', 'introduction', 'head_img'], 'required'],
+            [['introduction'], 'string'],
+            [['read_num', 'praise_num', 'created_at', 'post_num'], 'integer'],
+            [['name', 'head_img'], 'string', 'max' => 255],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => 'Name',
+            'introduction' => 'Introduction',
+            'head_img' => 'Head Img',
+            'read_num' => 'Read Num',
+            'praise_num' => 'Praise Num',
+            'created_at' => 'Created At',
+            'post_num' => 'Post Num',
+        ];
+    }
+}
