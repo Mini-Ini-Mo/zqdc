@@ -91,14 +91,13 @@ use mdm\admin\components\MenuHelper;
 			
 				return $return;
 			};
-		    echo Nav::widget(
-			    [
-			        "encodeLabels" => false,
-			        "options" => ["class" => "sidebar-menu tree",'data-widget'=> 'tree'],
-			        "items" => MenuHelper::getAssignedMenu(Yii::$app->user->id,null,$callback),
-			    ]
-			);    
-		    ?>
+		
+		  ?>  
+		
+		<?= dmstr\widgets\Menu::widget([
+		    'options' => ['class' => 'sidebar-menu tree','data-widget'=> 'tree'],
+		    'items' => MenuHelper::getAssignedMenu(Yii::$app->user->id,null,$callback),
+		]); ?>
     </section>
 
 </aside>
