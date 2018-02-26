@@ -49,15 +49,15 @@ class Special extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'expert_id' => 'Expert ID',
-            'viewpoint' => 'Viewpoint',
-            'analysis' => 'Analysis',
-            'praise_num' => 'Praise Num',
-            'read_num' => 'Read Num',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'cate_id' => 'Cate ID',
+            'title' => '标题',
+            'expert_id' => '专家',
+            'viewpoint' => '观点',
+            'analysis' => '观点解析',
+            'praise_num' => '赞',
+            'read_num' => '阅读量',
+            'status' => '状态',
+            'created_at' => '创建时间',
+            'cate_id' => '分类',
         ];
     }
 }

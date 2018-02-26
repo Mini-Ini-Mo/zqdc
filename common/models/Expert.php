@@ -46,13 +46,13 @@ class Expert extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'introduction' => 'Introduction',
-            'head_img' => 'Head Img',
-            'read_num' => 'Read Num',
-            'praise_num' => 'Praise Num',
-            'created_at' => 'Created At',
-            'post_num' => 'Post Num',
+            'name' => '专家',
+            'introduction' => '简介',
+            'head_img' => '头像',
+            'read_num' => '阅读量',
+            'praise_num' => '赞',
+            'created_at' => '创建时间',
+            'post_num' => '发文数量',
         ];
     }
 }
