@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "zq_special".
+ * This is the model class for table "zq_special".专业
  *
  * @property int $id
  * @property string $title 标题
