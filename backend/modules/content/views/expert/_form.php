@@ -14,20 +14,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'introduction')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'head_img')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'read_num')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'praise_num')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'post_num')->textInput(['maxlength' => true]) ?>
-
+    <?=$form->field($model, 'head_img')->widget('common\widgets\file_upload\FileUpload')?>
+				
+	<?=$form->field($model, 'introduction')->widget('common\widgets\ueditor\Ueditor',[
+		'options' => [
+			'initialFrameWidth' => 850,
+		    'initialFrameHeight' => 300,
+		]
+	])?>
+	
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('保存', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -7,34 +7,36 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\search\ExpertSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Experts';
+$this->title = '专家管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="expert-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Expert', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新增专家', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
+            //['class' => 'yii\grid\SerialColumn'],
             'id',
             'name',
-            'introduction:ntext',
+            //'introduction:ntext',
             'head_img',
             'read_num',
-            //'praise_num',
+            'praise_num',
             //'created_at',
-            //'post_num',
+            'post_num',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                "header" => "操作",
+            ],
         ],
     ]); ?>
 </div>
