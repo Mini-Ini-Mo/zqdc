@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Cate */
 
-$this->title = 'Update Cate: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Cates', 'url' => ['index']];
+$this->title = '编辑分类';
+$this->params['breadcrumbs'][] = ['label' => '分类管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

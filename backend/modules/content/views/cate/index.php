@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\search\CateSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cates';
+$this->title = '分类管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cate-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Cate', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新增分类', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,10 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',"header" => "操作",],
         ],
     ]); ?>
 </div>
