@@ -54,8 +54,7 @@ p{
 	width:100%;
 }
 .expert-top .expert-info p{
-	line-height:20px;
-	height:20px;
+	word-wrap:break-word;
 }
 .expert .expert-bottom{
 	margin-top:15px;
