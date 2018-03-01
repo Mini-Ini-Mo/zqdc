@@ -1,21 +1,73 @@
 .debug{
 	border:1px solid #f00;
 }
+p{
+	margin:0 !important;
+}
+.no-padding-l{
+	padding-left:0 !important;
+}
 .expert .expert-item{
-	height:100px;
-	overflow:hidden;
+	display:block;
+	height:110px;
+	margin-right: 0px;
+    margin-left: 0px;
 	border-bottom:1px solid #ccc;
 	margin-bottom:10px;
 }
 .expert .expert-item .headimgurl{
+    padding-right: 0;
+    padding-left: 0;
+}
+.expert .expert-item .headimgurl img{
 	width:100%;
+	max-height:100px;
 }
 .expert .expert-item .expert-item-desc{
 	height:100%;
 }
-.expert .expert-item .expert-item-desc .row-2{
+.expert-item .expert-item-desc .row-2{
 	position:absolute;
 	left:10px;
-	bottom:0px;
+	bottom:10px;
 	width:90%;
+}
+/*专家详情*/
+.expert-top{
+	padding:8px;
+	border:1px solid #ccc;
+}
+.expert-top .expert-base{
+	height:100px;
+	margin-right: 0px;
+    margin-left: 0px;
+}
+.expert-top .expert-base .headimgurl{
+    padding-right: 0;
+    padding-left: 0;
+}
+.expert-top .expert-base .headimgurl img{
+	width:100%;
+	max-height:100px;
+}
+.expert-top .expert-info{
+	width:100%;
+}
+.expert-top .expert-info p{
+	line-height:20px;
+	height:20px;
+}
+.expert .expert-bottom{
+	margin-top:15px;
+	margin-bottom:6px;
+}
+
+
+.block-head{
+	margin:15px 0 20px;
+	font-size:15px;
+}
+
+.praise-btn{
+	cursor:pointer;
 }

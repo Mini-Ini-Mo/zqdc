@@ -18,7 +18,7 @@ use yii\helpers\Url;
 class FileUpload extends InputWidget
 {
     public $config = [];
-    
+
     public $value = '';
     
     public function init()
