@@ -6,7 +6,23 @@ $this->registerCssFile('css/expert.css');
 
 $this->title = '专题';
 ?>
-<!-- 新领袖 -->
+
+
+<div class="row bg-white" id="server_index">
+	<div class="col-xs-12">
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					
+					<?php foreach($cates as $k=>$a):?>
+					<td class="<?php //if($cid == $k){echo 'in';}?>"><a href="<?php //echo $this->createUrl('jihua',array('cid'=>$k,'gid'=>$gid))?>#server_index"><?php echo $a;?></a></td>
+					<?php endforeach;?>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+	
 <div class="expert">
     
     <?php 

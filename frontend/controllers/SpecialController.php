@@ -12,6 +12,7 @@ use frontend\models\ContactForm;
 use common\models\Special;
 use yii\data\Pagination;
 use yii\web\Response;
+use common\models\Cate;
 
 
 class SpecialController extends Controller{
@@ -66,9 +67,9 @@ class SpecialController extends Controller{
     }
     
     
-    public function actionIndex()
+    public function actionIndex($cate_id=1)
     {
-        $query = Special::find()->where(['cate_id' => 1]);
+        $query = Special::find()->where(['cate_id' => $cate_id]);
         
         $count = $query->count();
         
@@ -82,8 +83,9 @@ class SpecialController extends Controller{
         ->offset($pagination->offset)
         ->limit($pagination->limit)
         ->all();
+        $cates = Cate::getCates();
         
-        return $this->render('index',['list'=>$list,'pagination'=>$pagination]);
+        return $this->render('index',['list'=>$list,'pagination'=>$pagination,'cates'=>$cates]);
     }
     
     public function actionView($id)
