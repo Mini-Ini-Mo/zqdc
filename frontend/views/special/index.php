@@ -17,7 +17,7 @@ $this->title = '专题';
     <div class="row expert-item">
         <a href="<?php echo Url::toRoute(['view', 'id' => $val->id]);?>">
             <div class="col-xs-5 col-sm-5 headimgurl">
-                <img src="<?php //echo \Yii::$app->params['resourceUrl'].$val->head_img;?>">
+                <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->img;?>">
             </div>
         </a>
         <div class="col-xs-7 col-sm-7 expert-item-desc">
@@ -26,7 +26,7 @@ $this->title = '专题';
                 <div class="clearfix"></div>
             </div>
             <div class="row-1">
-                <p class="pull-left">概要内容<?php ;?></p>
+                <p class="pull-left"><?php echo $val->introduction;?></p>
                 <div class="clearfix"></div>
             </div>
             <div class="row-2">

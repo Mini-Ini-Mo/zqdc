@@ -41,4 +41,27 @@ class Cate extends \yii\db\ActiveRecord
             'name' => '分类',
         ];
     }
+    
+    public static function getCates($id=null)
+    {
+        $model = new Cate();
+        if($id):
+        $model = $model->find()->where(['id' => $id])->one();
+        else:
+        $model = $model->find(
+            [
+                'order'=>'id asc'
+            ]
+        )->all();
+        endif;
+        
+        
+        $data=array();
+        if($model){
+            foreach($model as $val){
+                $data[$val->id]=$val->name;
+            }
+        }
+        return $data;
+    }
 }

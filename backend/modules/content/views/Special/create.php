@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Special */
 
-$this->title = 'Create Special';
+$this->title = '创建专题';
 $this->params['breadcrumbs'][] = ['label' => 'Specials', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

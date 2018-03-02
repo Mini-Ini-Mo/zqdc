@@ -35,7 +35,7 @@ class Special extends \yii\db\ActiveRecord
     {
         return [
             [['expert_id', 'praise_num', 'read_num', 'created_at', 'cate_id'], 'integer'],
-            [['viewpoint', 'analysis'], 'required'],
+            [['viewpoint', 'analysis','img', 'introduction'], 'required'],
             [['viewpoint', 'analysis'], 'string'],
             [['title'], 'string', 'max' => 255],
             [['status'], 'string', 'max' => 4],
@@ -58,6 +58,9 @@ class Special extends \yii\db\ActiveRecord
             'status' => '状态',
             'created_at' => '创建时间',
             'cate_id' => '分类',
+            'img' => '图片',
+            'introduction' => '概要',
+            
         ];
     }
 }

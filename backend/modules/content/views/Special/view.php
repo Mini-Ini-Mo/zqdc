@@ -38,6 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
             'created_at',
             'cate_id',
+            'introduction:ntext',
+            'img',
         ],
     ]) ?>
 

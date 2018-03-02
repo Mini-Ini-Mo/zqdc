@@ -55,4 +55,22 @@ class Expert extends \yii\db\ActiveRecord
             'post_num' => '发文数量',
         ];
     }
+    
+    public static function getExpertName($id=null)
+    {
+        $expert = new self();
+        if($id):
+        $model = $expert->find()->select(['id','name'])->where(['id' => $id])->one();
+        else:
+        $model = $expert->find()->select(['id','name'])->indexBy('id')->all();
+        endif;
+        
+        $data=array();
+        if($model){
+            foreach($model as $val){
+                $data[$val->id]=$val->name;
+            }
+        }
+        return $data;
+    }
 }
