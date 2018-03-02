@@ -2,6 +2,7 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
+use common\models\Expert;
 
 $this->registerCssFile('css/expert.css');
 
@@ -13,10 +14,10 @@ $this->registerJsFile('js/expert.js', ['depends' => [\yii\web\JqueryAsset::class
     <p><strong>--大佬简介--</strong></p>
     <div class="row expert-item" style="margin-top:10px;border-bottom: none;">
         <div class="col-xs-5 col-sm-5 headimgurl">
-            <img src="https://t11.baidu.com/it/u=3190383520,3564931388&fm=173&s=BB22E10526A05317D10F5C9C0300C0A2&w=639&h=399&img.JPEG">
+            <img src="<?php echo \Yii::$app->params['resourceUrl'].Expert::getExpertInfo( $info->expert_id,'head_img');?>">
         </div>
         <div class="col-xs-7 col-sm-7 expert-item-desc">
-            <div>简要简要简要简要简要简要简要简要</div>
+            <div><?php echo Expert::getExpertInfo( $info->expert_id,'introduction');?></div>
         </div>
     </div>
     

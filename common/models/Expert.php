@@ -73,4 +73,13 @@ class Expert extends \yii\db\ActiveRecord
         }
         return $data;
     }
+    
+    public static function getExpertInfo($id,$feild=null)
+    {
+        $expert = new self();
+        $model = $expert->find()->where(['id' => $id])->one();
+        if($feild)
+            return $model[$feild];
+        return $model;
+    }
 }
