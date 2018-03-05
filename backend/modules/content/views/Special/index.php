@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use common\models\Cate;
+use common\models\Expert;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\SpecialSearch */
@@ -28,14 +29,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'title',
-            'expert_id',
+            [
+            'attribute' => 'expert_id',
+            'label' => '专家',
+            'value' => function($model) {
+                    $expert = Expert::find()->where(['id' => $model->expert_id])->one();
+                    return $expert->name;
+                },
+            'headerOptions' => ['width' => '150']
+            ],
             //'viewpoint:ntext',
             //'analysis:ntext',
             'praise_num',
             'read_num',
             //'status',
             //'created_at',
-            'cate_id',
+            [
+            'attribute' => 'cate_id',
+            'label' => '分类',
+            'value' => function($model) {
+                    $cate = Cate::find()->where(['id' => $model->cate_id])->one();
+                    return $cate->name;
+                },
+            'headerOptions' => ['width' => '150']
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
