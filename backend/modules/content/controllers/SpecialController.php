@@ -4,6 +4,7 @@ namespace app\modules\content\controllers;
 
 use Yii;
 use common\models\Special;
+use common\models\Expert;
 use app\models\search\SpecialSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -87,6 +88,11 @@ class SpecialController extends Controller
         $model = new Special();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //计算发文数量
+            if($model->expert_id){
+                $postnum = Special::find()->where(['expert_id'=>$model->expert_id])->count();
+                Expert::updateAll(['post_num' => $postnum], ['id'=>$model->expert_id]);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -107,6 +113,11 @@ class SpecialController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //计算发文数量
+            if($model->expert_id){
+                $postnum = Special::find()->where(['expert_id'=>$model->expert_id])->count();
+                Expert::updateAll(['post_num' => $postnum], ['id'=>$model->expert_id]);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -125,6 +136,12 @@ class SpecialController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        //计算发文数量
+        if($id){
+            $expert_id = Special::find()->where(['id'=>$id])->one();
+            $postnum = Special::find()->where(['expert_id'=>$expert_id['expert_id']])->count();
+            Expert::updateAll(['post_num' => $postnum], ['id'=>$expert_id]);
+        }
 
         return $this->redirect(['index']);
     }
