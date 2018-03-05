@@ -23,8 +23,8 @@ $this->registerJsFile('js/expert.js', ['depends' => [\yii\web\JqueryAsset::class
     
     <p><strong>--人物观点--</strong></p>
     <div class="expert-top" style="margin-top:10px;">
-        <div class="row expert-base">
-            <div class="col-xs-7 col-sm-7">
+        <div class="row expert-info">
+            <div class="col-xs-12 col-sm-12">
                 <p><?php echo $info->viewpoint;?></p>
             </div>
         </div>
@@ -34,8 +34,8 @@ $this->registerJsFile('js/expert.js', ['depends' => [\yii\web\JqueryAsset::class
     
     <p><strong>--观点解析--</strong></p>
     <div class="expert-top" style="margin-top:10px;">
-        <div class="row expert-base">
-            <div class="col-xs-7 col-sm-7">
+        <div class="row expert-info">
+            <div class="col-xs-12 col-sm-12">
                 <p><?php echo $info->analysis;?></p>
             </div>
         </div>

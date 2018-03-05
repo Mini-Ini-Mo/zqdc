@@ -12,7 +12,8 @@ use common\models\Expert;
 /* = $form->field($model, 'viewpoint')->textarea(['rows' => 6])
    = $form->field($model, 'analysis')->textarea(['rows' => 6]) 
    = $form->field($model, 'cate_id')->textInput()
-   $form->field($model, 'expert_id')->textInput()*/
+   = $form->field($model, 'expert_id')->textInput()
+   = $form->field($model, 'created_at')->textInput()*/
 ?>
 
 
@@ -56,8 +57,6 @@ use common\models\Expert;
     <?= $form->field($model, 'read_num')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
 
     <div class="form-group">
         <label>分类：</label>

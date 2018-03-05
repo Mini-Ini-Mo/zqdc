@@ -46,7 +46,7 @@ $this->title = '专题';
                 <div class="clearfix"></div>
             </div>
             <div class="row-2">
-                <p class="pull-right"><?php echo $val->created_at;?></p>
+                <p class="pull-right"><?php echo date("Y-m-d", $val->created_at);?></p>
                 <div class="clearfix"></div>
             </div>
         </div> 
