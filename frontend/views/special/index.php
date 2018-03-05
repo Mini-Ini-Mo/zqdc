@@ -15,7 +15,7 @@ $this->title = '专题';
 				<tr>
 					
 					<?php foreach($cates as $k=>$a):?>
-					<td class="<?php //if($cid == $k){echo 'in';}?>"><a href="<?php //echo $this->createUrl('jihua',array('cid'=>$k,'gid'=>$gid))?>#server_index"><?php echo $a;?></a></td>
+					<td class="<?php //if($cid == $k){echo 'in';}?>"><a href="/?r=special&cate_id=<?php echo $k;?>#server_index"><?php echo $a;?></a></td>
 					<?php endforeach;?>
 				</tr>
 			</table>
