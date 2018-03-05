@@ -4,7 +4,8 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
 $this->registerCssFile('css/expert.css');
-    
+
+Yii::$app->name = '新领袖';
 ?>
 
 <!-- 新领袖 -->

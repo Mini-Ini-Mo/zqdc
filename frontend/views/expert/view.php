@@ -6,6 +6,8 @@ use yii\helpers\Html;
 $this->registerCssFile('css/expert.css');
 
 $this->registerJsFile('js/expert.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+
+Yii::$app->name = '新领袖';
     
 ?>
 
@@ -45,21 +47,34 @@ $this->registerJsFile('js/expert.js', ['depends' => [\yii\web\JqueryAsset::class
     
     <div class="block-body">
         
+        <?php 
+            if (!empty($recommend)) :
+            foreach($recommend as $key => $val):
+        ?>
         <div class="row expert-item" style="margin-top:10px;">
-            <div class="col-xs-5 col-sm-5 headimgurl">
-                <img src="https://t11.baidu.com/it/u=3190383520,3564931388&fm=173&s=BB22E10526A05317D10F5C9C0300C0A2&w=639&h=399&img.JPEG">
-            </div>
+            
+            <a href="<?php echo Url::toRoute(['special/view', 'id' => $val['id']]);?>">
+                <div class="col-xs-5 col-sm-5 headimgurl">
+                    <img src="<?= \Yii::$app->params['resourceUrl'].$val['img']?>">
+                </div>
+            </a>
+            
             <div class="col-xs-7 col-sm-7 expert-item-desc">
                 
-                <p>专家名称</p>
-                <div>简要简要简要简要简要简要简要简要</div>
+                <p><?= $val['title']?></p>
+                <div><?= $val['introduction']?></div>
                 <div class="row-2">
-                    <p class="pull-left">阅读 2000</p>
-                    <p class="pull-right">点赞   1533</p>
+                    <p class="pull-left">阅读 <?= $val['read_num']?></p>
+                    <p class="pull-right">点赞   <?= $val['praise_num']?></p>
                     <div class="clearfix"></div>
                 </div>
             </div>
         </div> 
+       
+        <?php 
+            endforeach;
+            endif;
+        ?> 
 
       
     </div>

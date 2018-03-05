@@ -26,30 +26,7 @@ class ExpertController extends Controller
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
+        return [];
     }
 
     /**
@@ -88,7 +65,7 @@ class ExpertController extends Controller
         ->offset($pagination->offset)
         ->limit($pagination->limit)
         ->all();
-        
+ 
         return $this->render('index',['list'=>$list,'pagination'=>$pagination]);
     }
     
@@ -107,7 +84,16 @@ class ExpertController extends Controller
             $info->save();
         }
         
-        return $this->render('view',['info'=>$info]);
+        //推荐文章
+        $recommend = (new \yii\db\Query())
+        ->select(['id', 'title','introduction','img','read_num','praise_num'])
+        ->from('zq_special')
+        ->where('expert_id = :id',[':id' => $id])
+        ->orderBy(['read_num' => SORT_DESC])
+        ->limit(5)
+        ->all();
+        
+        return $this->render('view',['info'=>$info,'recommend'=>$recommend]);
     }
     
     

@@ -5,12 +5,31 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use app\components\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
 AppAsset::register($this);
+
+
+//注册返回事件
+$js = <<<JS
+
+    var hw = $("body").width();
+    var lw = $(".go-back").outerWidth();
+    var rw = $(".navbar-toggle").outerWidth();
+    var cw = hw-lw-rw-30;
+    
+    $(".navbar-brand").css({width:cw+'px',display:'inline-block',textAlign:'center'});
+
+    $("#go-back").click(function(){
+        window.history.go(-1);
+    });
+
+JS;
+
+$this->registerJs($js);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -21,6 +40,21 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <style type="text/css">
+        .brand-center{
+	       text-align:center;
+        }
+        .go-back{
+            float: left;
+            height: 50px;
+            padding: 15px 15px;
+            font-size: 18px;
+            line-height: 20px;
+    	    color: #9d9d9d;
+        	font-size:14px;
+        }
+        .go-back:link,.go-back:visited,.go-back:hover,.go-back:active  {color: #9d9d9d;text-decoration:none;}
+    </style>
     <?php $this->head() ?>
 </head>
 <body>
@@ -37,23 +71,10 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => '新领袖', 'url' => ['/expert/index']],
+        ['label' => '专题', 'url' => ['/special/index']],
     ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
+    
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
