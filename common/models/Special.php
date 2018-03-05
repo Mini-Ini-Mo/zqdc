@@ -59,7 +59,6 @@ class Special extends \yii\db\ActiveRecord
             'created_at' => '创建时间',
             'cate_id' => '分类',
             'img' => '图片',
-            'introduction' => '概要',
             
         ];
     }

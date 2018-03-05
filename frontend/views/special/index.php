@@ -42,7 +42,7 @@ $this->title = '专题';
                 <div class="clearfix"></div>
             </div>
             <div class="row-1">
-                <p class="pull-left"><?php echo $val->introduction;?></p>
+                <p class="pull-left"><?php echo mb_substr($val->viewpoint,0,22,'utf-8');?></p>
                 <div class="clearfix"></div>
             </div>
             <div class="row-2">

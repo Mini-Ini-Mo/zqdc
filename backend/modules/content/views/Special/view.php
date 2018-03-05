@@ -36,9 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'praise_num',
             'read_num',
             'status',
-            'created_at',
+            [
+                'label'=>'创建时间',
+                'attribute' => 'created_at',
+                'format' => ['date', 'php:Y-m-d H:i:s'],
+            ],
             'cate_id',
-            'introduction:ntext',
             'img',
         ],
     ]) ?>

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\Cate;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\SpecialSearch */
@@ -25,16 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'title',
             'expert_id',
-            'viewpoint:ntext',
-            'analysis:ntext',
-            //'praise_num',
-            //'read_num',
+            //'viewpoint:ntext',
+            //'analysis:ntext',
+            'praise_num',
+            'read_num',
             //'status',
             //'created_at',
-            //'cate_id',
+            'cate_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -90,9 +90,11 @@ class SpecialController extends Controller{
     
     public function actionView($id)
     {   
-        $info = Special::findOne(['id' => $id]);
-        $info->read_num += 1;
-        $info->save();
+        $info = Special::find()->where(['id' => $id])->one();
+        if (!empty($info)) {
+            $info->read_num += 1;
+            $info->save();
+        }
         
         return $this->render('view',['info'=>$info]);
     }
