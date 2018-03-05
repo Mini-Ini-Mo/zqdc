@@ -35,7 +35,7 @@ class Special extends \yii\db\ActiveRecord
     {
         return [
             [['expert_id', 'praise_num', 'read_num', 'created_at', 'cate_id'], 'integer'],
-            [['viewpoint', 'analysis','img', 'introduction'], 'required'],
+            [['viewpoint', 'analysis','img'], 'required'],
             [['viewpoint', 'analysis'], 'string'],
             [['title'], 'string', 'max' => 255],
             [['status'], 'string', 'max' => 4],
