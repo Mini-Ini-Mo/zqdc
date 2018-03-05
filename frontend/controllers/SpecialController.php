@@ -91,11 +91,8 @@ class SpecialController extends Controller{
     public function actionView($id)
     {   
         $info = Special::find()->where(['id' => $id])->one();
-        if (!empty($info)) {
-            $info->read_num += 1;
-            $info->save();
-        }
         
+        $info->updateCounters(['read_num' => 1]);
         return $this->render('view',['info'=>$info]);
     }
     
@@ -118,8 +115,7 @@ class SpecialController extends Controller{
             return ['code'=>402,'reason'=>'参数有误'];
         }
         
-        $info->praise_num += 1;
-        $info->save();
+        $info->updateCounters(['praise_num' => 1]);
         return ['code'=>200,'reason'=>'操作成功'];
     }
 }
