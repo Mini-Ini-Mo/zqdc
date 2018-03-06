@@ -25,12 +25,13 @@ Yii::$app->name = '新领袖';
         <div class="col-xs-7 col-sm-7 expert-item-desc">
             <div class="row-1">
                 <p class="pull-left"><?php echo $val->name;?></p>
-                <p class="pull-right">点赞   <?php echo $val->praise_num;?></p>
+                
                 <div class="clearfix"></div>
             </div>
             <div class="row-2">
-                <p class="pull-left">阅读 <?php echo $val->read_num;?></p>
-                <p class="pull-right">发文   <?php echo $val->post_num;?></p>
+                <p class="tags">阅读 <?php echo $val->read_num;?></p>
+                <p class="tags" style="width:30%;">发文   <?php echo $val->post_num;?></p>
+                <p class="tags" style="width:34%;"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>   <?php echo $val->praise_num;?></p>
                 <div class="clearfix"></div>
             </div>
         </div> 

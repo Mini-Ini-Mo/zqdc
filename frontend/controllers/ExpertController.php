@@ -86,7 +86,7 @@ class ExpertController extends Controller
         
         //推荐文章
         $recommend = (new \yii\db\Query())
-        ->select(['id', 'title','introduction','img','read_num','praise_num'])
+        ->select(['id', 'title','img','read_num','praise_num'])
         ->from('zq_special')
         ->where('expert_id = :id',[':id' => $id])
         ->orderBy(['read_num' => SORT_DESC])
@@ -103,23 +103,40 @@ class ExpertController extends Controller
      */
     public function actionPraise()
     {
+        \Yii::$app->response->format=Response::FORMAT_JSON;
+        
         $request = \Yii::$app->request;
+        $cookies = Yii::$app->request->cookies;
         
         $id = $request->get('id',0);
+
+        if (($cookie = $cookies->get('expert_id')) !== null) {
+             
+            $cookie = json_decode($cookie,true);
+            
+            if (in_array($id,$cookie)) {
+                return ['code'=>100,'reason'=>'您已经点赞。'];
+            }
+        }
         
         $info = Expert::find()
         ->where(['id' => $id])
         ->one();
-        
-        \Yii::$app->response->format=Response::FORMAT_JSON;
-        
+
         if (empty($info)) {
             return ['code'=>402,'reason'=>'参数有误'];
         }
-        
+
         $info->praise_num += 1;
         $info->save();
-        return ['code'=>200,'reason'=>'操作成功'];
+       
+       $cookie[] = $id;
+       Yii::$app->response->cookies->add(new \yii\web\Cookie([
+            'name' => 'expert_id',
+            'value'=>json_encode($cookie),
+        ]));
+        
+        return ['code'=>200,'reason'=>'操作成功','data'=>['praise'=>$info->praise_num]];
     }
     
     
