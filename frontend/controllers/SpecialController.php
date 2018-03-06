@@ -90,10 +90,9 @@ class SpecialController extends Controller{
     
     public function actionView($id)
     {   
-        $info = Special::findOne(['id' => $id]);
-        $info->read_num += 1;
-        $info->save();
+        $info = Special::find()->where(['id' => $id])->one();
         
+        $info->updateCounters(['read_num' => 1]);
         return $this->render('view',['info'=>$info]);
     }
     
@@ -103,21 +102,20 @@ class SpecialController extends Controller{
     public function actionPraise()
     {
         $request = \Yii::$app->request;
-    
+        
         $id = $request->get('id',0);
-    
+        
         $info = Special::find()
         ->where(['id' => $id])
         ->one();
-    
+        
         \Yii::$app->response->format=Response::FORMAT_JSON;
-    
+        
         if (empty($info)) {
             return ['code'=>402,'reason'=>'参数有误'];
         }
-    
-        $info->praise_num += 1;
-        $info->save();
+        
+        $info->updateCounters(['praise_num' => 1]);
         return ['code'=>200,'reason'=>'操作成功'];
     }
 }
