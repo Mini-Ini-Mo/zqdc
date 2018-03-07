@@ -2,6 +2,7 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
+use common\components\helper\StringHelper;
 
 $this->registerCssFile('css/expert.css');
 
@@ -62,7 +63,7 @@ Yii::$app->name = '新领袖';
             <div class="col-xs-7 col-sm-7 expert-item-desc">
                 
                 <p><?= $val['title']?></p>
-                <div>sss</div>
+                <div><?php echo mb_substr($val['viewpoint'],0,22,'utf-8');?></div>
                 <div class="row-2" style="width:90%;">
                     <p class="pull-left">阅读 <?= $val['read_num']?></p>
                     <p class="pull-right"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <?= $val['praise_num']?></p>
