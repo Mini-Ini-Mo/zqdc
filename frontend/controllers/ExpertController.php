@@ -59,7 +59,7 @@ class ExpertController extends Controller
         $pagination = new Pagination(['totalCount' => $count]);
         
         //设置每页数量
-        $pagination->setPageSize(2);
+        $pagination->setPageSize(5);
         
         $list = $query->orderBy('id')
         ->offset($pagination->offset)
