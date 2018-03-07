@@ -21,7 +21,7 @@ Yii::$app->name = '新领袖';
             <div class="col-xs-12 headimgurl">
                 <img src="<?php echo \Yii::$app->params['resourceUrl'].$info->head_img;?>">
                 <div class="expert-info">
-                    <p><?php echo $info->name;?></p>
+                    <p style="font-size:15px;font-weight:bold;color:#222;"><?php echo $info->name;?></p>
                     <div style="margin-top:8px;">
                         <?php echo $info->introduction;?>
                     </div>
