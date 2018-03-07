@@ -43,7 +43,13 @@ $this->registerJsFile('js/expert.js', ['depends' => [\yii\web\JqueryAsset::class
     
     <div class="row expert-bottom">
         <div class="col-xs-3 col-sm-3"><p>阅读 <?php echo $info->read_num;?></p></div>
-        <div class="col-xs-3 col-sm-3"><p class="praise-btn" data-url="<?php echo Url::toRoute(['praise', 'id' => $info->id]);?>">点赞   <?php echo $info->praise_num;?></p></div>
+        <div class="col-xs-3 col-sm-3">
+        <!-- <p class="praise-btn" data-url="<?php echo Url::toRoute(['praise', 'id' => $info->id]);?>">点赞   <?php echo $info->praise_num;?></p> -->
+        <p class="praise-btn" data-url="<?php echo Url::toRoute(['praise', 'id' => $info->id]);?>">
+           <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+           <?php echo $info->praise_num;?>
+        </p>
+        </div>
         <div class="col-xs-3 col-sm-3"><p></p></div>
     </div>
     

@@ -7,7 +7,8 @@ $(function(){
 		$.get(target,function(result){
 			
 			if (result.code == 200) {
-				location.reload();
+				$(".praise-box").html(result.data.praise);
+
 			} else {
 				alert(result.reason);
 			}

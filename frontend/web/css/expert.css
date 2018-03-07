@@ -30,15 +30,19 @@ p{
 	position:absolute;
 	left:10px;
 	bottom:10px;
-	width:90%;
+	width:100%;
+}
+.expert-item .expert-item-desc .row-2 .tags{
+	width:35%;float:left;
 }
 /*专家详情*/
 .expert-top{
 	padding:8px;
 	border:1px solid #ccc;
+	width:100%;
+	overflow: hidden;
 }
 .expert-top .expert-base{
-	height:100px;
 	margin-right: 0px;
     margin-left: 0px;
 }
@@ -47,20 +51,24 @@ p{
     padding-left: 0;
 }
 .expert-top .expert-base .headimgurl img{
-	width:100%;
+	width:160px;
+	float:left;
+	margin-right:5px;
 	max-height:100px;
+	border:1px solid #ccc;
 }
 .expert-top .expert-info{
 	width:100%;
 }
 .expert-top .expert-info p{
 	word-wrap:break-word;
+	word-break: break-all;
+	white-space: pre-wrap;
 }
 .expert .expert-bottom{
 	margin-top:15px;
 	margin-bottom:6px;
 }
-
 
 .block-head{
 	margin:15px 0 20px;
