@@ -86,7 +86,7 @@ class SpecialController extends Controller
     public function actionCreate()
     {
         $model = new Special();
-
+        $model->created_at = time();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //计算发文数量
             if($model->expert_id){
