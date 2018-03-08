@@ -23,6 +23,16 @@ return [
 		"@mdm/admin" => "@vendor/mdmsoft/yii2-admin",
 	],
     'components' => [
+        'i18n'=>[
+            "translations"=>[
+                "*"=>[
+                    'class'=>'yii\i18n\PhpMessageSource',
+                    'fileMap'=>[
+                        'common'=>'common.php'
+                    ]
+                ]
+            ]
+        ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
