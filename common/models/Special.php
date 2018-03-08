@@ -34,11 +34,10 @@ class Special extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['expert_id', 'praise_num', 'read_num', 'created_at', 'cate_id'], 'integer'],
+            [['expert_id', 'praise_num', 'read_num', 'created_at', 'cate_id', 'status'], 'integer'],
             [['viewpoint', 'analysis','img'], 'required'],
             [['viewpoint', 'analysis'], 'string'],
             [['title'], 'string', 'max' => 255],
-            [['status'], 'string', 'max' => 4],
         ];
     }
 
