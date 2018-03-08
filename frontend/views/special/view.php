@@ -33,7 +33,7 @@ $this->registerJsFile('js/expert.js', ['depends' => [\yii\web\JqueryAsset::class
     <div class="block-head"></div>
     
     <p><strong>--观点解析--</strong></p>
-    <div class="expert-top" style="margin-top:10px;">
+    <div class="expert-top" style="margin-top:10px;overflow: hidden">
         <div class="row expert-info">
             <div class="col-xs-12 col-sm-12">
                 <p><?php echo $info->analysis;?></p>
