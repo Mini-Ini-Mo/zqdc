@@ -17,7 +17,7 @@ $this->registerJsFile('js/expert.js', ['depends' => [\yii\web\JqueryAsset::class
             <img src="<?php echo \Yii::$app->params['resourceUrl'].Expert::getExpertInfo( $info->expert_id,'head_img');?>">
         </div>
         <div class="col-xs-7 col-sm-7 expert-item-desc" style="word-wrap:break-word;height:auto;">
-            <?php echo Expert::getExpertInfo( $info->expert_id,'introduction');?>
+            <?php echo substr(Expert::getExpertInfo( $info->expert_id,'introduction'),0,50);?>
         </div>
     </div>
     
