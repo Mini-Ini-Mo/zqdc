@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'headerOptions' => ['width' => '150']
             ],
             'viewpoint:ntext',
-            'analysis:ntext',
+            ['attribute'=>'analysis','format'=>'raw'],
             'praise_num',
             'read_num',
             [
@@ -63,9 +63,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'img',
             'label' => '图片',
             'value' => function($model) {
-                return \Yii::$app->params['resourceUrl'].$model->img;
+                $url = \Yii::$app->params['resourceUrl'].$model->img;
+                return "<img src=$url>";
             },
-            'headerOptions' => ['width' => '150']
+            'headerOptions' => ['width' => '150'],
+            'format'=>'raw'
             ],
         ],
     ]) ?>
