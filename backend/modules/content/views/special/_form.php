@@ -38,12 +38,7 @@ use common\models\Expert;
 
     <?=$form->field($model, 'img')->widget('common\widgets\file_upload\FileUpload',['config'=>['suggest'=>"仅支持文件格式为jpg、jpeg、png以及gif<br>大小在1MB以下的文件<br/>建议尺寸：160*100px"]]); ?>
 	
-    <?=$form->field($model, 'viewpoint')->widget('common\widgets\ueditor\Ueditor',[
-		'options' => [
-			'initialFrameWidth' => 850,
-		    'initialFrameHeight' => 300,
-		]
-	]); ?>
+    <?=$form->field($model, 'viewpoint')->textarea(['rows'=>5])?>
 	
 	<?=$form->field($model, 'analysis')->widget('common\widgets\ueditor\Ueditor',[
 		'options' => [
