@@ -42,16 +42,20 @@ class SpecialController extends Controller
             'ueditor'=>[
                 'class' => 'common\widgets\ueditor\UeditorAction',
                 'config'=>[
-                //上传图片配置
-                'imageUrlPrefix' => \Yii::$app->params['resourceUrl'], /* 图片访问路径前缀 */
-                'imagePathFormat' => "/image/special/intro/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
+                    //上传图片配置
+                    'imageUrlPrefix' => \Yii::$app->params['resourceUrl'], /* 图片访问路径前缀 */
+                    'imagePathFormat' => "/image/special/intro/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
 
-                'videoUrlPrefix'=>\Yii::$app->params['resourceUrl'],
-                'videoPathFormat' => "/video/{yyy}{mm}{dd}/{time}{rand:6}",
-                'videoMaxSize'=>'102400000',
-                'videoAllowFiles'=> [
-                    ".ogg", ".mp4"]
-                ]
+                    'videoUrlPrefix'=>\Yii::$app->params['resourceUrl'],
+                    'videoPathFormat' => "/file/video/{yyyy}{mm}{dd}/{time}{rand:6}",
+                    'videoMaxSize'=>'102400000',
+                    'videoAllowFiles'=> [
+                         ".ogg", ".mp4",
+                    ],
+                    'fileUrlPrefix' => \Yii::$app->params['resourceUrl'],
+                    'filePathFormat' => '/file/aat/{yyyy}{mm}{dd}/{time}{rand:6}',
+                ],
+
             ]
         ];
     }
