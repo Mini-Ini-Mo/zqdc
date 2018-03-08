@@ -1,9 +1,0 @@
-aaa_name
-aaa_head_img
-aaa_introduction
-aaa_name
-aaa_head_img
-aaa_introduction
-yii\widgets\ActiveFieldaaa_name
-yii\widgets\ActiveFieldaaa_head_img
-yii\widgets\ActiveFieldaaa_introduction
