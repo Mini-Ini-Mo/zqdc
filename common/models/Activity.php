@@ -5,7 +5,7 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "{{%zq_activity}}".
+ * This is the model class for table "zq_activity".
  *
  * @property int $id 主键
  * @property string $topical 主题
@@ -37,10 +37,11 @@ class Activity extends \yii\db\ActiveRecord
         return [
             [['topical'], 'required'],
             [['content'], 'string'],
-            [['expert_id', 'act_begin_time', 'act_end_time', 'created_at', 'status', 'act_type'], 'integer'],
+            [['expert_id', 'created_at', 'status', 'act_type'], 'integer'],
             [['topical'], 'string', 'max' => 60],
             [['thumb'], 'string', 'max' => 100],
             [['intro'], 'string', 'max' => 200],
+            [['act_begin_time', 'act_end_time'], 'string', 'max' => 30],
         ];
     }
 
@@ -55,7 +56,7 @@ class Activity extends \yii\db\ActiveRecord
             'thumb' => '活动图',
             'intro' => '简介',
             'content' => '活动详情',
-            'expert_id' => '讲师id',
+            'expert_id' => '讲师',
             'act_begin_time' => '活动开始时间',
             'act_end_time' => '活动结束时间',
             'created_at' => '创建时间',

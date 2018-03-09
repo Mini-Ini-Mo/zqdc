@@ -25,17 +25,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'topical',
-            'thumb',
-            'intro',
-            'content:ntext',
-            //'expert_id',
-            //'act_begin_time',
-            //'act_end_time',
+            //'thumb',
+            //'intro',
+            //'content:ntext',
+            ['attribute'=>'expert_id','value'=>function($model){
+                $res = \yii\helpers\ArrayHelper::map(\common\models\Expert::find()->all(),'id','name');
+                return $res[$model->expert_id];
+            }],
+            'act_begin_time',
+            'act_end_time',
             //'created_at',
             //'status',
-            //'act_type',
+            ['attribute'=>'act_type','value'=>function($model){
+                $res = [1=>'论坛',2=>'讲座'];
+                return $res[$model->act_type];
+            }],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

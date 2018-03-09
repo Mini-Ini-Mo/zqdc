@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('修改', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('删除', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -30,15 +30,30 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'topical',
-            'thumb',
-            'intro',
-            'content:ntext',
+            [
+                'attribute' => 'thumb',
+                'label' => '图片',
+                'value' => function($model) {
+                    $url = \Yii::$app->params['resourceUrl'].$model->thumb;
+                    return "<img src=$url>";
+                },
+                'headerOptions' => ['width' => '150'],
+                'format'=>'raw'
+            ],
+            ['attribute'=>'intro','format'=>'raw'],
+            ['attribute'=>'content','format'=>'raw'],
             'expert_id',
             'act_begin_time',
             'act_end_time',
             'created_at',
-            'status',
-            'act_type',
+            ['attribute'=>'status','value'=>function($model){
+                $res = [0=>'删除',1=>'显示'];
+                return $res[$model->status];
+            }],
+            ['attribute'=>'act_type','value'=>function($model){
+                $res = [1=>'论坛',2=>'讲座'];
+                return $res[$model->status];
+            }],
         ],
     ]) ?>
 

@@ -29,6 +29,26 @@ class ActivityController extends Controller
         ];
     }
 
+    public function actions()
+    {
+        return [
+            'upload' => [
+                'class' => 'common\widgets\file_upload\UploadAction',
+                'config' => [
+                    'imagePathFormat' => '/image/activity/{yyyy}{mm}{dd}/{time}{rand:6}',
+                ]
+            ],
+            'ueditor'=>[
+                'class' => 'common\widgets\ueditor\UeditorAction',
+                'config'=>[
+                    //上传图片配置
+                    'imageUrlPrefix' => \Yii::$app->params['resourceUrl'], /* 图片访问路径前缀 */
+                    'imagePathFormat' => "/image/activity/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
+                ]
+            ]
+        ];
+    }
+
     /**
      * Lists all Activity models.
      * @return mixed
