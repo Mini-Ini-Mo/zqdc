@@ -119,38 +119,39 @@ class SpecialController extends Controller{
         return ['code'=>200,'reason'=>'操作成功'];
     }*/
     
-    public function actionPraise()
+public function actionPraise()
     {
         \Yii::$app->response->format=Response::FORMAT_JSON;
-    
+        
         $request = \Yii::$app->request;
         $cookies = Yii::$app->request->cookies;
-    
+        
         $id = $request->get('id',0);
-    
+
         if (($cookie = $cookies->get('expert_id')) !== null) {
             $cookie = json_decode($cookie,true);
             if (in_array($id,$cookie)) {
                 return ['code'=>100,'reason'=>'您已经点赞。'];
             }
         }
-    
+        
         $info = Special::find()
         ->where(['id' => $id])
         ->one();
-    
+
         if (empty($info)) {
             return ['code'=>402,'reason'=>'参数有误'];
         }
-    
-         $info->updateCounters(['praise_num' => 1]);
-         
-        $cookie[] = $id;
-        Yii::$app->response->cookies->add(new \yii\web\Cookie([
-        'name' => 'expert_id',
-        'value'=>json_encode($cookie),
+
+        $info->praise_num += 1;
+        $info->save();
+       
+       $cookie[] = $id;
+       Yii::$app->response->cookies->add(new \yii\web\Cookie([
+            'name' => 'expert_id',
+            'value'=>json_encode($cookie),
         ]));
-    
+        
         return ['code'=>200,'reason'=>'操作成功','data'=>['praise'=>$info->praise_num]];
     }
 }
