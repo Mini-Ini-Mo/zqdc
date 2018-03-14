@@ -24,8 +24,8 @@ Yii::$app->name = '新领袖';
         </a>
         <div class="col-xs-7 col-sm-7 expert-item-desc">
             <div class="row-1">
-                <p class="pull-left"><?php echo $val->name;?></p>
-                
+                <p class="pull-left"><h4><?php echo $val->name;?></h4></p>
+                <p class="pull-left"><?php echo $val->position;?></p>
                 <div class="clearfix"></div>
             </div>
             <div class="row-2">
