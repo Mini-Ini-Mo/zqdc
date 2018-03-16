@@ -171,8 +171,8 @@ $this->registerJs($js);
     <div class="form-group">
         <label for="phone" class="col-xs-3 control-label text-right baoming-option">手机号</label>
         <?= $form->field($model, 'phone',['options'=>['class'=>'col-xs-5'],'inputOptions' =>['class' => 'form-control phone'],'template' => '{input}'])->textInput(['placeholder'=>"请输入联系人手机号"]) ?>
-        <div class="col-xs-3">
-            <button type="button" class="btn btn-sm getcaptcha">验证码</button>
+        <div class="col-xs-4" style="padding-left:0px;">
+            <button type="button" class="btn btn-sm getcaptcha">发送验证码</button>
         </div>
         <div class="clearfix"></div>
         <div class="help-block col-xs-offset-3 baoming-error"></div>
