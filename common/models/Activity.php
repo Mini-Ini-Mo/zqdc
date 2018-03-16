@@ -34,7 +34,7 @@ class Activity extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
+        /* return [
             [['topical'], 'required'],
             [['content'], 'string'],
             [['expert_id', 'created_at', 'status', 'act_type'], 'integer'],
@@ -42,6 +42,16 @@ class Activity extends \yii\db\ActiveRecord
             [['thumb'], 'string', 'max' => 100],
             [['intro'], 'string', 'max' => 200],
             [['act_begin_time', 'act_end_time'], 'string', 'max' => 30],
+        ]; */
+        
+        return [
+            [['topical', 'act_begin_time', 'act_end_time'], 'required'],
+            [['content'], 'string'],
+            [['expert_id', 'created_at', 'status', 'act_type'], 'integer'],
+            [['act_begin_time', 'act_end_time'], 'safe'],
+            [['topical'], 'string', 'max' => 60],
+            [['thumb'], 'string', 'max' => 100],
+            [['intro'], 'string', 'max' => 200],
         ];
     }
 

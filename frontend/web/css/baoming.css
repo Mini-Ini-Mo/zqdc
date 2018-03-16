@@ -1,0 +1,19 @@
+.debug{
+	border:1px solid #f00;
+}
+p{
+	margin:0 !important;
+}
+.no-padding-l{
+	padding-left:0 !important;
+}
+.baoming-box .baoming-option{
+	padding-right:0px;
+}
+.baoming-error{
+	padding-left:15px;
+	margin-bottom:0px !important;
+	margin-top:0px !important;
+	line-height:20px;
+	font-size:12px;
+}

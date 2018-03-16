@@ -38,6 +38,8 @@ AppAsset::register($this);
     ]);
 
     $menuItems = [
+        ['label' => '精英论坛', 'url' => ['/forum/index']],
+        ['label' => '专题讲座', 'url' => ['/lessons/index']],
         ['label' => '新领袖', 'url' => ['/expert/index']],
         ['label' => '专题', 'url' => ['/special/index']],
     ];
