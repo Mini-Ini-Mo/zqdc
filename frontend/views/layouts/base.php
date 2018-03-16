@@ -30,14 +30,15 @@ AppAsset::register($this);
 
     <?php
     \yii\bootstrap\NavBar::begin([
-        'brandLabel' => '<<返回',
-        'brandUrl' => '/expert/index',
+        'brandLabel' => Yii::$app->name,
+        'brandUrl' => '#',
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top text-center',
         ],
     ]);
 
     $menuItems = [
+        ['label' => '首页', 'url' => Yii::$app->homeUrl],
         ['label' => '精英论坛', 'url' => ['/forum/index']],
         ['label' => '专题讲座', 'url' => ['/lessons/index']],
         ['label' => '新领袖', 'url' => ['/expert/index']],
