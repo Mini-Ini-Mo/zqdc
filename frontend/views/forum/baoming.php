@@ -138,7 +138,7 @@ $this->registerJs($js);
     
         $session = Yii::$app->session;
         $bmresult = $session->getFlash('bmresult');
-        if (!empty(bmresult)) {
+        if (!empty($bmresult)) {
             if ($bmresult['status'] == 'error') {
     ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
