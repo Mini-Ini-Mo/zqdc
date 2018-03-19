@@ -2,7 +2,8 @@
 namespace frontend\models;
 
 use yii\base\Model;
-use common\models\User;
+//use common\models\User;
+use common\models\Member;
 
 /**
  * Signup form
@@ -35,6 +36,27 @@ class SignupForm extends Model
             ['password', 'string', 'min' => 6],
         ];
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => '用户名',
+            'auth_key' => 'Auth Key',
+            'password' => '密码',
+            'password_reset_token' => 'Password Reset Token',
+            'email' => 'Email',
+            'status' => 'Status',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'com_name' => 'Com Name',
+            'contacts' => 'Contacts',
+            'rememberMe' => '记住我',
+        ];
+    }
 
     /**
      * Signs user up.
@@ -47,7 +69,8 @@ class SignupForm extends Model
             return null;
         }
         
-        $user = new User();
+        //$user = new User();
+        $user = new Member();
         $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
