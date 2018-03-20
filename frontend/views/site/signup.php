@@ -135,7 +135,7 @@ JS;
 $this->registerJs($js);
 ?>
 <div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Html::encode($this->title) ?></h3>
 
     <div class="row">
         <div class="col-lg-5">
@@ -152,9 +152,11 @@ $this->registerJs($js);
                 </div>
                 <?= $form->field($model, 'captcha',$fieldOptions1)->textInput(['placeholder'=>"请输入验证码"]) ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                <?= $form->field($model, 'password',$fieldOptions1)->passwordInput() ?>
+                
+                <?= $form->field($model, 'confirmpd',$fieldOptions1)->passwordInput() ?>
 
-                <div class="form-group">
+                <div class="form-group text-center">
                     <?= Html::submitButton('注册', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
 
