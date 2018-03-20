@@ -7,15 +7,14 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+//use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use common\widgets\SMS\Sms;
-use common\widgets\SMS\SendSMS;
-use common\models\Smslog;
+use common\models\LoginFormF;
 use yii\web\Response;
+
 /**
  * Site controller
  */
@@ -51,7 +50,7 @@ class SiteController extends Controller
             ],
         ];
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -65,7 +64,6 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            
         ];
     }
 
@@ -90,7 +88,8 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        //$model = new LoginForm();
+        $model = new LoginFormF();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
@@ -217,63 +216,8 @@ class SiteController extends Controller
         ]);
     }
     
-    
-    public function actionSms()
-    {
-        \Yii::$app->response->format=Response::FORMAT_JSON;
-        $request = Yii::$app->getRequest();
-    
-        if (!$request->getIsPost()) {
-            return ['code'=>403,'reason'=>'请求有误'];
-        }
-    
-        $mobile = $request->post('mobile');
-    
-        //验证一下手机号码
-        $mobre='/^(133|153|180|181|189|130|131|132|145|155|156|185|186|134|135|136|137|138|139|147|150|151|152|157|158|159|170|173|177|182|183|184|187|188)\d{8}$/';
-    
-        if (!empty($mobile) && !preg_match($mobre,$mobile)) {
-            return ['code'=>402,'reason'=>'请输入正确的手机号码'];
-        }
-    
-        $record = (new \yii\db\Query())
-        ->select(['id', 'sendtime'])
-        ->from('zq_smslog')
-        ->where(['mobile' => $mobile,'sms_type'=>1,'isuse'=>0])
-        ->orderBy('id desc')
-        ->one();
-    
-        if (!empty($record)) {  //已经发送了
-            if(time() <= ($record['sendtime']+120) ) {//发送的验证码还有效
-                return ['code'=>402,'reason'=>'当前验证码有效。'];
-            }
-        }
-    
-        $code = mt_rand(100000, 999999);
-        $content = '您的短信验证码：' .$code. '，30分钟内有效';
-    
-        $sms = new SendSMS();
-        $res = $sms->send($mobile, $content);
-    
-        if ($res) {
-            $smslog = new Smslog();
-            $smslog->mobile = $mobile;
-            $smslog->code = "$code";
-            $smslog->ipaddr = Yii::$app->request->userIP;
-            $smslog->sms_type = 1;
-            $smslog->sendtime = time();
-            $res = $smslog->save();
-            if(!$res) {
-                Yii::error($mobile."的验证码".$code."未记录到数据库");
-            }
-            return ['code'=>200,'reason'=>'验证码已经发送'];
-        } else {
-            return ['code'=>400,'reason'=>'验证码已经失败'];
-        }
-    
-    }
-    
-    
-    
-    
 }
+
+/*class LoginForm
+{
+}*/
