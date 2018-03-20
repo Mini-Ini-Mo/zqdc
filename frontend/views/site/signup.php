@@ -150,7 +150,7 @@ $this->registerJs($js);
                     <div class="clearfix"></div>
                     <div class="help-block col-xs-offset-3 baoming-error"></div>
                 </div>
-                <?= $form->field($model, 'password',$fieldOptions1)->textInput(['placeholder'=>"请输入验证码"]) ?>
+                <?= $form->field($model, 'captcha',$fieldOptions1)->textInput(['placeholder'=>"请输入验证码"]) ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
