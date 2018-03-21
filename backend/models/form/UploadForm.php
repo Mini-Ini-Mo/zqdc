@@ -16,7 +16,7 @@ class UploadForm extends Model
     public function rules()
     {
         return [
-          [['file'],'file','maxFiles' => 10,'maxSize' => 1024*1024*1024],//10M
+          [['file'],'file','maxFiles' => 10,'maxSize' => 1024*1024*30],//10M
         ];
     }
 }
