@@ -80,7 +80,7 @@ class FilesController extends Controller
                     if ($file->saveAs($new_path)) {
                         $model = new Files();
                         $model->attributes = [
-                            'name' => $file->name,
+                            'name' => $new_name,
                             'file' => $new_path,
                             'size' => $file->size,
                             'type' => $file->type,
