@@ -75,8 +75,8 @@ class FilesController extends Controller
             if($form->file && $form->validate())
             {
                 foreach ($form->file as $file) {
-                    $new_name = date('YmdHis', time()) . rand(0, 999);
-                    $new_path = 'upload/' . $new_name . '.' . $file->getExtension();
+                    $new_name = date('YmdHis', time()) . rand(0, 999). '.' . $file->getExtension();
+                    $new_path = 'upload/' . $new_name;
                     if ($file->saveAs($new_path)) {
                         $model = new Files();
                         $model->attributes = [
