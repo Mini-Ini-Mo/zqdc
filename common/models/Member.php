@@ -43,7 +43,7 @@ class Member extends ActiveRecord implements IdentityInterface
     {
         return [
             //[['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
-            [['username',  'password_hash', 'email'], 'required'],
+            [['username',  'password_hash'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'com_name', 'contacts'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
