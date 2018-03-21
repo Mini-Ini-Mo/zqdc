@@ -1,0 +1,77 @@
+.debug{
+	border:1px solid #f00;
+}
+p{
+	margin:0 !important;
+}
+.no-padding-l{
+	padding-left:0 !important;
+}
+.list-box{}
+.forum-item{
+	display:block;
+	height:110px;
+	margin-right: 0px !important;
+    margin-left: 0px !important;
+	margin-bottom:10px;
+	border-bottom:1px solid #ccc;
+}
+.forum-item .headimgurl{
+	padding-left:0px;
+	padding-right:0px;
+}
+.forum-item .headimgurl img{
+	width:100%;
+	max-height:100px;
+}
+.forum-item .forum-item-desc{
+	padding-left:8px;
+	padding-right:8px;
+}
+.forum-item .forum-item-desc .forum-topical{
+	font-size:14px;
+	font-weight:bold;
+	color:#333;
+}
+.forum-item .forum-item-desc .forum-intro{
+	margin-top:8px;
+}
+
+
+/*论坛详情*/
+.forum-info-header{
+	font-size:16px;
+	font-weight:bold;
+	color:#333;
+	text-align:center;
+	margin-bottom:6px;
+}
+.forum-info-body{
+	width:100%;
+	padding:6px;
+	border:1px solid #999;
+}
+.forum-info-body p{
+	word-wrap:break-word;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+.relevance-special{
+	margin:0px !important;
+}
+.relevance-special .headimgurl{
+	padding:0px;
+}
+.relevance-special .headimgurl img{
+	width:100%;
+	max-height:100px;
+	border:1px solid #999;
+}
+
+.block-head{
+	margin:15px 0 15px;
+	font-size:15px;
+}
+.forum-baoming .btn-baoming{
+	width:100%;padding:4px 16px;border-radius:0px;color: #555;border-color: #999;
+}

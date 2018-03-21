@@ -34,14 +34,16 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'act_begin_time')->widget(\kartik\datetime\DateTimePicker::className(),['value'=>0,
         'pluginOptions'=>[
             'autoclose'=>true,
-            'format' => 'yyyy/mm/dd HH:ii:ss'
+            'format' => 'yyyy-mm-dd HH:ii:00',
+            'minuteStep'=>30
         ]]) ?>
         </div>
         <div class="col-md-4">
         <?= $form->field($model, 'act_end_time')->widget(\kartik\datetime\DateTimePicker::className(),['value'=>0,
             'pluginOptions'=>[
                 'autoclose'=>true,
-                'format' => 'yyyy/mm/dd HH:ii:ss'
+                'format' => 'yyyy-mm-dd HH:ii:00',
+                'minuteStep'=>30
             ]]) ?>
         </div>
     </div>

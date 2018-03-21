@@ -1,22 +1,15 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\SignupForm */
-/*<?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
- *<?= $form->field($model, 'email') ?>*/
-
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
+use yii\helpers\Html;
 use common\components\helper\StringHelper;
+use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use yii\bootstrap\Modal;
-
-$this->title = '注册';
-$this->params['breadcrumbs'][] = $this->title;
 
 $this->registerCssFile('css/baoming.css');
+
+Yii::$app->name = '报名参会';
+
 $fieldOptions1 = [
     'options' => ['class'=>'form-group'],
     'labelOptions'=>['class'=>'col-xs-3 control-label text-right baoming-option'],
@@ -24,7 +17,6 @@ $fieldOptions1 = [
     'errorOptions'=>['class'=>'help-block col-xs-offset-3 baoming-error'],
     'template' => '{label}<div class="col-xs-9">{input}</div><div class="clearfix"></div>{hint}{error}'
 ];
-
 
 //注册返回事件
 $js = <<<JS
@@ -34,7 +26,7 @@ $js = <<<JS
     //获取校验码
     $(".getcaptcha").click(function(){
     
-        var phone = $(".username").val();
+        var phone = $(".phone").val();
         var flg = true;
 
 	   if(jQuery(this).hasClass('clicked'))return;//按钮灰色不可点击
@@ -52,7 +44,7 @@ $js = <<<JS
 
        if(flg){
             //发送验证Ajax
-    	   jQuery.post('index.php?r=site/sms',{mobile:phone},function(results){
+    	   jQuery.post('index.php?r=lessons/sms',{mobile:phone},function(results){
 
                 //var data = jQuery.parseJSON(results);
                 console.log(results);
@@ -133,34 +125,77 @@ $js = <<<JS
 JS;
 
 $this->registerJs($js);
+  
 ?>
-<div class="site-signup">
-    <h3><?= Html::encode($this->title) ?></h3>
+<!-- 论坛信息-->
+<div class="baoming-box">
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-                
-                <div class="form-group">
-                    <label for="phone" class="col-xs-3 control-label text-right baoming-option">手机号</label>
-                    <?= $form->field($model, 'username',['options'=>['class'=>'col-xs-5'],'inputOptions' =>['class' => 'form-control username'],'template' => '{input}'])->textInput(['placeholder'=>"请输入联系人手机号"]) ?>
-                    <div class="col-xs-4" style="padding-left:0px;">
-                        <button type="button" class="btn btn-sm getcaptcha">发送验证码</button>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="help-block col-xs-offset-3 baoming-error"></div>
-                </div>
-                <?= $form->field($model, 'captcha',$fieldOptions1)->textInput(['placeholder'=>"请输入验证码"]) ?>
+    <?php 
+    
+        $session = Yii::$app->session;
+        $bmresult = $session->getFlash('bmresult');
+        if (!empty($bmresult)) {
+            if ($bmresult['status'] == 'error') {
+    ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Warning!&nbsp;</strong><?php echo $bmresult['msg'];?>
+    </div>
+    
+    <?php 
+        } elseif ($bmresult['status'] == 'success') {
+    ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>success!&nbsp;</strong><?php echo $bmresult['msg'];?>
+        </div>
+    <?php 
+        }
+    }
+    ?>
+    
+    <?php $form = ActiveForm::begin([
+        'options'=>['class'=>'form-horizontal'],
+        'action'=>['lessons/baoming','id'=>$act_id],
+        'method'=>"post"
+    ]); ?>
+    
+    <?= $form->field($model, 'act_id',['options'=>['class'=>''],'template' => '{input}'])->hiddenInput(['value'=>$act_id]) ?>
+    
+    <?= $form->field($model, 'company',$fieldOptions1)->textInput(['placeholder'=>"请输入企业名称"]) ?>
+    
+    <?= $form->field($model, 'contacts',$fieldOptions1)->textInput(['placeholder'=>"请输入联系人名称"]) ?>
+       
+    <?= $form->field($model, 'position',$fieldOptions1)->textInput(['placeholder'=>"请输入联系人职位"]) ?>
 
-                <?= $form->field($model, 'password',$fieldOptions1)->passwordInput() ?>
-                
-                <?= $form->field($model, 'confirmpd',$fieldOptions1)->passwordInput() ?>
+    <div class="form-group">
+        <label for="phone" class="col-xs-3 control-label text-right baoming-option">手机号</label>
+        <?= $form->field($model, 'phone',['options'=>['class'=>'col-xs-5'],'inputOptions' =>['class' => 'form-control phone'],'template' => '{input}'])->textInput(['placeholder'=>"请输入联系人手机号"]) ?>
+        <div class="col-xs-4" style="padding-left:0px;">
+            <button type="button" class="btn btn-sm getcaptcha">发送验证码</button>
+        </div>
+        <div class="clearfix"></div>
+        <div class="help-block col-xs-offset-3 baoming-error"></div>
+    </div>
+    
+    <?= $form->field($model, 'captcha',$fieldOptions1)->textInput(['placeholder'=>"请输入验证码"]) ?>
+    
+    <?= $form->field($model, 'join_num',$fieldOptions1)->textInput(['placeholder'=>"请输入参会人数"]) ?>
 
-                <div class="form-group text-center">
-                    <?= Html::submitButton('注册', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
+      <div class="form-group">
+        <label for="captcha" class="col-xs-3 control-label text-right baoming-option">报名费用</label>
+        <div class="col-xs-9">
+            200元/人
         </div>
     </div>
+    
+      <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-9 text-center">
+          <?= Html::button('提交', ['class' => 'btn btn-default','type'=>'submit']) ?>
+        </div>
+      </div>
+      
+    
+    <?php ActiveForm::end(); ?> 
+
 </div>

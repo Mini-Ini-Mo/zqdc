@@ -7,11 +7,13 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+//use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\LoginFormF;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -48,7 +50,7 @@ class SiteController extends Controller
             ],
         ];
     }
-
+    
     /**
      * {@inheritdoc}
      */
@@ -62,6 +64,13 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'sms' => [
+                'class' => 'common\components\Sms',
+                'mobile'=>Yii::$app->getRequest()->post('mobile'),
+                'sms_type'=>1,
+                'expires_in'=>Yii::$app->params['bm_expires_in'],
+            ],
+    
         ];
     }
 
@@ -86,7 +95,8 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        //$model = new LoginForm();
+        $model = new LoginFormF();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
@@ -213,3 +223,7 @@ class SiteController extends Controller
         ]);
     }
 }
+
+/*class LoginForm
+{
+}*/
