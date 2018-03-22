@@ -35,11 +35,13 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    $menuItems = [
-        ['label' => '首页', 'url' => ['/site/index']],
-        //['label' => 'About', 'url' => ['/site/about']],
-        ['label' => '联系', 'url' => ['/site/contact']],
-    ];
+    if (!Yii::$app->user->isGuest) {
+        $menuItems = [
+            //['label' => '首页', 'url' => ['/site/index']],
+            //['label' => 'About', 'url' => ['/site/about']],
+            ['label' => '个人中心', 'url' => ['/member/index']],
+        ];
+    }
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => '注册', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];
