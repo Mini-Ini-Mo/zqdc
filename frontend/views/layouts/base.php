@@ -37,13 +37,23 @@ AppAsset::register($this);
         ],
     ]);
 
-    $menuItems = [
-        ['label' => '首页', 'url' => Yii::$app->homeUrl],
-        ['label' => '精英论坛', 'url' => ['/forum/index']],
-        ['label' => '专题讲座', 'url' => ['/lessons/index']],
-        ['label' => '新领袖', 'url' => ['/expert/index']],
-        ['label' => '专题', 'url' => ['/special/index']],
-    ];
+    if (!Yii::$app->user->isGuest) {
+        $menuItems = [
+            ['label' => '个人中心', 'url' => ['/member/index']],
+            ['label' => '精英论坛', 'url' => ['/forum/index']],
+            ['label' => '专题讲座', 'url' => ['/lessons/index']],
+            ['label' => '新领袖', 'url' => ['/expert/index']],
+            ['label' => '专题', 'url' => ['/special/index']],
+        ];
+    }else{
+        $menuItems = [
+            ['label' => '首页', 'url' => Yii::$app->homeUrl],
+            ['label' => '精英论坛', 'url' => ['/forum/index']],
+            ['label' => '专题讲座', 'url' => ['/lessons/index']],
+            ['label' => '新领袖', 'url' => ['/expert/index']],
+            ['label' => '专题', 'url' => ['/special/index']],
+        ];
+    }
     
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

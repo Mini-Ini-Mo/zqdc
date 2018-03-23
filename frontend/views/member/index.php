@@ -18,13 +18,30 @@ $this->title = '个人中心';
 </div>
 
 <div class="page-header">
-  <h5><img src="<?= Yii::$app->params['frontendUrl'] ?>/images/lt.png" class="img-circle" width="20" height="20"> 我的论坛 <small class="pull-right"><span class="glyphicon glyphicon-menu-right"></span></small></h5>
+  <h5>
+    <img src="<?= Yii::$app->params['frontendUrl'] ?>/images/lt.png" class="img-circle" width="20" height="20"> 我的论坛
+    <small class="pull-right">
+        <a href="<?=Yii::$app->params['frontendUrl']?>?r=member/myforum">
+            <span class="glyphicon glyphicon-menu-right"></span>
+        </a>
+    </small>
+  </h5>
 </div>
 
 <div class="page-header">
-  <h5><img src="<?= Yii::$app->params['frontendUrl'] ?>/images/kc.png" class="img-circle" width="20" height="20"> 我的课程 <small class="pull-right"><span class="glyphicon glyphicon-menu-right"></span></small></h5>
+  <h5>
+    <img src="<?= Yii::$app->params['frontendUrl'] ?>/images/kc.png" class="img-circle" width="20" height="20"> 我的课程 
+    <small class="pull-right">
+        <a href="<?=Yii::$app->params['frontendUrl']?>?r=member/mylessons">
+            <span class="glyphicon glyphicon-menu-right"></span>
+        </a>
+    </small>
+  </h5>
 </div>
 
 <div class="page-header">
-  <h5><img src="<?= Yii::$app->params['frontendUrl'] ?>/images/fp.png" class="img-circle" width="20" height="20"> 我的发票 <small class="pull-right"><span class="glyphicon glyphicon-menu-right"></span></small></h5>
+  <h5>
+    <img src="<?= Yii::$app->params['frontendUrl'] ?>/images/fp.png" class="img-circle" width="20" height="20"> 我的发票 
+    <small class="pull-right"><span class="glyphicon glyphicon-menu-right"></span></small>
+  </h5>
 </div>
