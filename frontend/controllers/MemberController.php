@@ -94,20 +94,58 @@ class MemberController extends Controller{
     public function actionMylessons()
     {
         $username = Yii::$app->user->identity->username;
-        $query = ActBaoming::find()->where(['phone' => $username])->joinwith([
-            'activity'=>function($q){
-                $q->where(['act_type'=>2]);
-            }
-        ]);
+        $lt_actinfo = ActBaoming::find()
+                        ->where(['phone' => $username])
+                        ->joinwith([
+                            'activity'=>function($q){
+                                $q->where(['act_type'=>1]);
+                            }
+                        ])
+                        ->orderBy('id')
+                        ->limit(2)
+                        ->all();
+        $kc_actinfo = ActBaoming::find()
+                        ->where(['phone' => $username])
+                        ->joinwith([
+                            'activity'=>function($q){
+                                $q->where(['act_type'=>2]);
+                            }
+                        ])
+                        ->orderBy('id')
+                        ->limit(2)
+                        ->all();
+        $xs_actinfo = ActBaoming::find()
+                        ->where(['phone' => $username])
+                        ->joinwith([
+                            'activity'=>function($q){
+                                $q->where(['act_type'=>3]);
+                            }
+                        ])
+                        ->orderBy('id')
+                        ->limit(2)
+                        ->all();
         
-        $count = $query->count();
-        $pagination = new Pagination(['totalCount' => $count]);
-        $pagination->setPageSize(5);
+        $xx_actinfo = ActBaoming::find()
+                        ->where(['phone' => $username])
+                        ->joinwith([
+                            'activity'=>function($q){
+                                $q->where(['act_type'=>4]);
+                            }
+                        ])
+                        ->orderBy('id')
+                        ->limit(2)
+                        ->all();
         
-        $actbminfo = $query->orderBy('id')
-        ->offset($pagination->offset)
-        ->limit($pagination->limit)
-        ->all();
-        return $this->render('mylessons',['actbminfo'=>$actbminfo,'pagination'=>$pagination]);
+        return $this->render('mylessons',['lt_actinfo'=>$lt_actinfo,
+                                          'kc_actinfo'=>$kc_actinfo,
+                                          'xs_actinfo'=>$xs_actinfo,
+                                          'xx_actinfo'=>$xx_actinfo]);
+    }
+    
+    public function actionMyinfo()
+    {
+        $username = Yii::$app->user->identity->username;
+        $info = Member::find()->where(['username'=>$username])->one();
+        return $this->render('myinfo',['info'=>$info]);
     }
 }
