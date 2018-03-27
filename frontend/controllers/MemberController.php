@@ -9,6 +9,7 @@ use yii\filters\VerbFilter;
 use common\models\ActBaoming;
 use yii\data\Pagination;
 use common\models\Activity;
+use yii\web\Request;
 
 class MemberController extends Controller{    
     /**
@@ -142,10 +143,44 @@ class MemberController extends Controller{
                                           'xx_actinfo'=>$xx_actinfo]);
     }
     
+    /**
+     * {详情}
+     */
+    public function actionLessonsview($id)
+    {
+        $info = Activity::find()
+        ->where(['id' => $id,'status' => 1])
+        ->one();
+    
+        if (empty($info)) {  //请求有误,重定向
+            $this->redirect(['member/mylessons']);
+        }
+    
+        //专家信息
+        $expert = (new \yii\db\Query())
+        ->select(['id', 'name','head_img','introduction'])
+        ->from('zq_expert')
+        ->where('id = :expert_id',[':expert_id' => $info->expert_id])
+        ->one();
+    
+        return $this->render('lessonsview',['info'=>$info,'expert'=>$expert]);
+    }
+    
+    /**
+     * {个人资料}
+     */
     public function actionMyinfo()
     {
         $username = Yii::$app->user->identity->username;
         $info = Member::find()->where(['username'=>$username])->one();
         return $this->render('myinfo',['info'=>$info]);
+    }
+    
+    /**
+     * {联系我们}
+     */
+    public function actionContact()
+    {
+        return $this->render('contact');
     }
 }

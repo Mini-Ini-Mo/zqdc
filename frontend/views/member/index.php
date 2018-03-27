@@ -64,7 +64,7 @@ $this->title = '个人中心';
         </h5>
     </li>
     <li class="page-header">
-        <h5> 联系我们
+        <h5> 我的需求
             <small class="pull-right">
                 <a href="<?=Yii::$app->params['frontendUrl']?>?r=member">
                     <span class="glyphicon glyphicon-menu-right"></span>
@@ -73,9 +73,9 @@ $this->title = '个人中心';
         </h5>
     </li>
     <li class="page-header">
-        <h5> 加入我们
+        <h5> 联系我们
             <small class="pull-right">
-                <a href="<?=Yii::$app->params['frontendUrl']?>?r=site/signup">
+                <a href="<?=Yii::$app->params['frontendUrl']?>?r=member">
                     <span class="glyphicon glyphicon-menu-right"></span>
                 </a>
             </small>
@@ -125,39 +125,6 @@ $this->title = '个人中心';
 <div class="page-header">
   <h5>
     <img src="<?= Yii::$app->params['frontendUrl'] ?>/images/fp.png" class="img-circle" width="20" height="20"> 我的发票
-    <small class="pull-right">
-        <a href="<?=Yii::$app->params['frontendUrl']?>?r=member/myforum">
-            <span class="glyphicon glyphicon-menu-right"></span>
-        </a>
-    </small>
-  </h5>
-</div>
-
-<div class="page-header">
-  <h5>
-    <img src="<?= Yii::$app->params['frontendUrl'] ?>/images/lt.png" class="img-circle" width="20" height="20"> 我的需求
-    <small class="pull-right">
-        <a href="<?=Yii::$app->params['frontendUrl']?>?r=member/myforum">
-            <span class="glyphicon glyphicon-menu-right"></span>
-        </a>
-    </small>
-  </h5>
-</div>
-
-<div class="page-header">
-  <h5>
-    <img src="<?= Yii::$app->params['frontendUrl'] ?>/images/lt.png" class="img-circle" width="20" height="20"> 加入我们
-    <small class="pull-right">
-        <a href="<?=Yii::$app->params['frontendUrl']?>?r=site/login">
-            <span class="glyphicon glyphicon-menu-right"></span>
-        </a>
-    </small>
-  </h5>
-</div>
-
-<div class="page-header">
-  <h5>
-    <img src="<?= Yii::$app->params['frontendUrl'] ?>/images/lt.png" class="img-circle" width="20" height="20"> 联系我们
     <small class="pull-right">
         <a href="<?=Yii::$app->params['frontendUrl']?>?r=member/myforum">
             <span class="glyphicon glyphicon-menu-right"></span>
