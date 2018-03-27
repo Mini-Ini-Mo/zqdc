@@ -4,43 +4,51 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\ActivitySearch */
+/* @var $searchModel app\models\search\ActLessonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Activities';
+$this->title = 'Act Lessons';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="activity-index">
+<div class="act-lessons-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Activity', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新增课程', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            /* ['class' => 'yii\grid\SerialColumn'], */
 
-            //'id',
+            'id',
             'topical',
+            //'less_cate',
+            
+            ['attribute'=>'less_cate','value'=>function($model){
+                $res = \yii\helpers\ArrayHelper::map(\common\models\ActLessType::find()->all(),'id','name');
+                return $res[$model->less_cate];
+            }],
+            
             //'thumb',
             //'intro',
             //'content:ntext',
-            ['attribute'=>'expert_id','value'=>function($model){
-                $res = \yii\helpers\ArrayHelper::map(\common\models\Expert::find()->all(),'id','name');
-                return $res[$model->expert_id];
-            }],
+            //'expert_id',
             'act_begin_time',
             'act_end_time',
             //'created_at',
-            //'status',
-            ['attribute'=>'act_type','value'=>function($model){
-                $res = [1=>'论坛',2=>'讲座'];
-                return $res[$model->act_type];
+            ['attribute'=>'status','value'=>function($model){
+                $res = [1=>'公开',2=>'不公开'];
+                return $res[$model->status];
+            }],
+            //'less_mode',
+            ['attribute'=>'less_mode','value'=>function($model){
+                $res = [1=>'线上',2=>'线下'];
+                return $res[$model->less_mode];
             }],
 
             [

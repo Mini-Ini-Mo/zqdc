@@ -20,8 +20,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'expert_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Expert::find()->all(),'id','name'),['prompt'=>'请选择']) ?>
 
+    <?= $form->field($model, 'less_type')->radioList(['1'=>'视频','2'=>'音频']) ?>
+    
     <?= $form->field($model, 'intro')->textarea(['rows' => 6]) ?>
-
+    
     <?= $form->field($model, 'content')->widget('common\widgets\ueditor\Ueditor',[
         'options' => [
             'initialFrameWidth' => 960,
