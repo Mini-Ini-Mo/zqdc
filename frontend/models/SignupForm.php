@@ -13,7 +13,8 @@ use common\models\Smslog;
 class SignupForm extends Model
 {
     public $username;
-    //public $email;
+    public $com_name;
+    public $contacts;
     public $password;
     public $captcha;
     public $confirmpd;
@@ -45,7 +46,13 @@ class SignupForm extends Model
             
             ['captcha', 'required'],
             //['captcha', 'captcha'],
-            ['captcha','checkCaptcha']
+            ['captcha','checkCaptcha'],
+            
+            ['com_name', 'trim'],
+            ['com_name', 'required'],
+            
+            ['contacts', 'trim'],
+            ['contacts', 'required'],
         ];
     }
     
@@ -64,8 +71,8 @@ class SignupForm extends Model
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'com_name' => 'Com Name',
-            'contacts' => 'Contacts',
+            'com_name' => '企业名称',
+            'contacts' => '联系人',
             'rememberMe' => '记住我',
             'captcha' => '验证码',
             'confirmpd' => '确认密码',

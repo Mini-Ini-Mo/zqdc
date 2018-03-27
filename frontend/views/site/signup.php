@@ -140,6 +140,9 @@ $this->registerJs($js);
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+                <?= $form->field($model, 'com_name',$fieldOptions1)->textInput(['placeholder'=>"请输入企业名称"]) ?>
+                
+                <?= $form->field($model, 'contacts',$fieldOptions1)->textInput(['placeholder'=>"请输入联系人"]) ?>
                 
                 <div class="form-group">
                     <label for="phone" class="col-xs-3 control-label text-right baoming-option">手机号</label>

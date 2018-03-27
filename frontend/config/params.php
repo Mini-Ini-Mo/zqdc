@@ -7,4 +7,7 @@ return [
     
     //报名验证码有效时间
     'bm_expires_in' => 120,
+    
+    //前端资源
+    'frontendUrl' => 'http://frontend.xuncaiwangcai.com',
 ];

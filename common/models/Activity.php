@@ -75,4 +75,9 @@ class Activity extends \yii\db\ActiveRecord
             'less_type'=> '课程类型'
         ];
     }
+    
+    public function getActBaoming()
+    {
+        return $this->hasMany(ActBaoming::className(), ['act_id' => 'id'])->asArray();
+    }
 }
