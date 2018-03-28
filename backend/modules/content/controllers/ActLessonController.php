@@ -173,7 +173,7 @@ class ActLessonController extends Controller
     
         //资源库
         $source = (new \yii\db\Query())
-        ->select(['id', 'file','name'])
+        ->select(['id', 'file','file_name'])
         ->from('files')
         ->where('uid = '.Yii::$app->user->getId())
         ->all();

@@ -107,7 +107,7 @@ $this->registerJs($js);
                                     foreach ($source as $item) {
                              
                             ?>
-                                <option value="<?php echo $item['file'];?>"><?php echo $item['name'];?></option>
+                                <option value="<?php echo $item['file'];?>"><?php echo $item['file_name'];?></option>
                             
                             <?php 
 

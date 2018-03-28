@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php endif ?>
         <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
+        <?= $form->field($model, 'file_name')->textInput(['maxlength' => true]) ?>
+            
         <?= $form->field($model, 'file[]')->fileInput(['multiple' => true]) ?>
 
         <div class="form-group">
