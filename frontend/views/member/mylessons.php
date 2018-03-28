@@ -8,16 +8,22 @@ $this->registerCssFile('css/lessons.css');
 Yii::$app->name = '我的课程';
 ?>
 
-<h5 class="text-center">个人资料</h5>
+<h5 class="text-center">我的课程</h5>
 
 <div class="list-box">
 
     <?php if (!empty($xs_actinfo)) :?>
-    <h4 class="title">线上筑道</h4>
+    <h4 class="title">线上筑道 
+        <a href="">
+            <small class="pull-right glyphicon glyphicon-option-horizontal"></small>
+        </a>
+    </h4>
     <?php foreach($xs_actinfo as $key => $val):?>
     <div class="row forum-item">
         <div class="col-xs-5 col-sm-5 headimgurl">
-            <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->activity['thumb'];?>">
+            <a href="<?php echo Url::toRoute(['lessonsview', 'id' => $val->activity['id']]);?>">
+                <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->activity['thumb'];?>">
+            </a>
         </div>
         <div class="col-xs-7 col-sm-7 forum-item-desc">
             <div class="forum-topical">
@@ -36,11 +42,17 @@ Yii::$app->name = '我的课程';
     <?php endif;?>
     
     <?php if (!empty($xx_actinfo)) :?>
-    <h4 class="title">线下博纳</h4>
+    <h4 class="title">线下博纳 
+        <a href="">
+            <small class="pull-right glyphicon glyphicon-option-horizontal"></small>
+        </a>
+    </h4>
     <?php foreach($xx_actinfo as $key => $val):?>
     <div class="row forum-item">
         <div class="col-xs-5 col-sm-5 headimgurl">
-            <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->activity['thumb'];?>">
+            <a href="<?php echo Url::toRoute(['lessonsview', 'id' => $val->activity['id']]);?>">
+                <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->activity['thumb'];?>">
+            </a>
         </div>
         <div class="col-xs-7 col-sm-7 forum-item-desc">
             <div class="forum-topical">
@@ -59,11 +71,17 @@ Yii::$app->name = '我的课程';
     <?php endif;?>
     
     <?php if (!empty($kc_actinfo)) :?>
-    <h4 class="title">游学课程</h4>
+    <h4 class="title">游学课程 
+        <a href="">
+            <small class="pull-right glyphicon glyphicon-option-horizontal"></small>
+        </a>
+    </h4>
     <?php foreach($kc_actinfo as $key => $val):?>
     <div class="row forum-item">
         <div class="col-xs-5 col-sm-5 headimgurl">
-            <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->activity['thumb'];?>">
+            <a href="<?php echo Url::toRoute(['lessonsview', 'id' => $val->activity['id']]);?>">
+                <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->activity['thumb'];?>">
+            </a>
         </div>
         <div class="col-xs-7 col-sm-7 forum-item-desc">
             <div class="forum-topical">
@@ -82,11 +100,17 @@ Yii::$app->name = '我的课程';
     <?php endif;?>
     
     <?php if (!empty($lt_actinfo)) :?>
-    <h4 class="title">论坛课程</h4>
+    <h4 class="title">论坛课程 
+        <a href="">
+            <small class="pull-right glyphicon glyphicon-option-horizontal"></small>
+        </a>
+    </h4>
     <?php foreach($lt_actinfo as $key => $val):?>
     <div class="row forum-item">
         <div class="col-xs-5 col-sm-5 headimgurl">
-            <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->activity['thumb'];?>">
+            <a href="<?php echo Url::toRoute(['lessonsview', 'id' => $val->activity['id']]);?>">
+                <img src="<?php echo \Yii::$app->params['resourceUrl'].$val->activity['thumb'];?>">
+            </a>
         </div>
         <div class="col-xs-7 col-sm-7 forum-item-desc">
             <div class="forum-topical">
