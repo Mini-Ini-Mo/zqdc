@@ -12,7 +12,6 @@ Yii::$app->name = '专题讲座';
     
 ?>
 <div class="block">
-    <div class="text-center"><?php echo $info['topical'];?></div>
     <div style="margin:10px 0px 15px;">
         <img src="<?php echo \Yii::$app->params['resourceUrl'].$info['thumb']?>" style="width:100%;height:200px;">
     </div>
