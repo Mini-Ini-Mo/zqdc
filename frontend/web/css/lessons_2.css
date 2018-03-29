@@ -59,7 +59,13 @@ video::-webkit-media-controls-panel {
 .lesson-cate a{
 	color:#300;
 }
-
+.study-abroad-content{
+	padding:8px 0px 0px !important;
+	text-align:center;
+}
+.study-abroad-content img{
+	max-width:100%;
+}
 
 
 
