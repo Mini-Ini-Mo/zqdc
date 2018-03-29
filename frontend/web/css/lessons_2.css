@@ -61,10 +61,10 @@ video::-webkit-media-controls-panel {
 }
 .study-abroad-content{
 	padding:8px 0px 0px !important;
-	text-align:center;
 }
 .study-abroad-content img{
 	max-width:100%;
+	text-align:center;
 }
 
 
