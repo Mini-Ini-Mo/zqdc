@@ -128,6 +128,10 @@ class SiteController extends Controller
                 'outTradeNo' => '2323232',
                 'notifyUrl' => 'http://f.zqdc.com/index.php?r=site/notify',
                 'body' => '商品'
+            ],
+            'signature' => [
+                'class' => 'common\widgets\yii2_wechat\SignatureAction',
+                'token' => 'wangcai',
             ]
 
         ];
