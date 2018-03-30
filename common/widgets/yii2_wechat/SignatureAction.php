@@ -25,7 +25,7 @@ class SignatureAction extends Action
 
             sort($arr);
 
-            $str = explode($arr);
+            $str = implode($arr);
 
             $str = sha1($str);
 
