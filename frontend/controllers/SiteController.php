@@ -20,6 +20,7 @@ use yii\web\Response;
  */
 class SiteController extends Controller
 {
+    public $layout = 'base';
     /**
      * {@inheritdoc}
      */

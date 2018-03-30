@@ -37,41 +37,28 @@ AppAsset::register($this);
         ],
     ]);
 
+    $menuItems = [
+        ['label' => '首页', 'url' => Yii::$app->homeUrl],
+        [
+            'label' => '中清商学',
+            'items' => [
+                ['label' => '中清筑道', 'url' => ['/lessons/index']],
+                ['label' => '中清博纳', 'url' => ['/lessons/offline']],
+                ['label' => '中清游学', 'url' => ['/study-abroad/index']],
+                ['label' => '中清论坛', 'url' => ['/forum/index']],
+    
+            ],
+        ],
+        ['label' => '新领袖', 'url' => ['/expert/index']],
+        ['label' => '专题', 'url' => ['/special/index']],
+    ];
+    
     if (!Yii::$app->user->isGuest) {
-        $menuItems = [
-            ['label' => '个人中心', 'url' => ['/member/index']],
-            [
-                'label' => '中清商学',
-                'items' => [
-                    ['label' => '中清筑道', 'url' => ['/lessons/index']],
-                    ['label' => '中清博纳', 'url' => ['/lessons/offline']],
-                    ['label' => '中清游学', 'url' => ['/study-abroad/index']],
-                    ['label' => '中清论坛', 'url' => ['/forum/index']],
-                
-                ],
-            ],
-            ['label' => '新领袖', 'url' => ['/expert/index']],
-            ['label' => '专题', 'url' => ['/special/index']],
-        ];
+        array_unshift($menuItems,['label' => '个人中心', 'url' => ['/member/index']]);
     }else{
-        $menuItems = [
-            ['label' => '首页', 'url' => Yii::$app->homeUrl],
-            [
-                'label' => '中清商学',
-                'items' => [
-                    ['label' => '中清筑道', 'url' => ['/lessons/index']],
-                    ['label' => '中清博纳', 'url' => ['/lessons/offline']],
-                    ['label' => '中清游学', 'url' => ['/study-abroad/index']],
-                    ['label' => '中清论坛', 'url' => ['/forum/index']],
-                    
-                ],
-            ],
-            ['label' => '新领袖', 'url' => ['/expert/index']],
-            ['label' => '专题', 'url' => ['/special/index']],
-        ];
+        array_push($menuItems,['label' => '注册', 'url' => ['/site/signup']],['label' => '登录', 'url' => ['/site/login']]);
     }
     
-
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,

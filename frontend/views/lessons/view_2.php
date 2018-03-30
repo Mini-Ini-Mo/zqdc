@@ -30,7 +30,20 @@ $js = <<<JS
     
     });
     
-    $(".video-one-a:first").click();
+    //初始化
+    function PlayInit()
+    {
+        player.src = "$resourceUrl"+$(".video-one-a:first").data('src');
+        $(".video-one-a:first").addClass('video-active');
+        player.oncanplay = function (){
+            player.play();
+        };
+    }
+            
+    if ($(".video-one-a").length > 0) {
+         PlayInit();   
+    }
+    
 
 JS;
 
