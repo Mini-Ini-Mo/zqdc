@@ -28,5 +28,6 @@ class MenuAction extends Action
             $official->setLogs('menu.txt', json_encode($data));
         }
         return true;
+        \Yii::$app->end();
     }
 }
