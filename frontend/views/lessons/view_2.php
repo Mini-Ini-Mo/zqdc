@@ -40,7 +40,7 @@ $request = Yii::$app->getRequest();
 $lessID = $request->get('id',0);
 $vid = $request->get('vid',1);
 
-Yii::$app->name = '专题讲座';
+Yii::$app->name = '中清筑道';
     
 ?>
 <div class="block">

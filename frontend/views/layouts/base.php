@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -27,7 +28,6 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-
     <?php
     \yii\bootstrap\NavBar::begin([
         'brandLabel' => Yii::$app->name,
@@ -91,7 +91,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; 中清地产 <?= date('Y') ?></p>
+        <p class="pull-left">&copy; 中清地产 <?= date('Y') ?></p>  
     </div>
 </footer>
 
