@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 <div class="files-form">
 
     <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
-
+    
     <?= $form->field($model, 'name')->hiddenInput(['maxlength' => true])->label(false) ?>
 
     <?= $form->field($model, 'file[]')->fileInput(['maxlength' => true,'class'=>'form-control','multiple' => true, 'accept' => 'image/*']) ?>

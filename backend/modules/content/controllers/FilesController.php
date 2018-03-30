@@ -70,6 +70,8 @@ class FilesController extends Controller
         $form = new UploadForm();
         if (\Yii::$app->request->isPost)
         {
+            $form->load(\Yii::$app->request->post());
+            
             $form->file = UploadedFile::getInstances($form,'file');
 
             if($form->file && $form->validate())
@@ -86,7 +88,9 @@ class FilesController extends Controller
                             'type' => $file->type,
                             'created_at' => time(),
                             'uid' => Yii::$app->user->getId(),
+                            'file_name'=>$form->file_name,
                         ];
+                        
                         if ($model->save()) {
                             Yii::$app->session->setFlash('success','上传成功！');
                             return $this->redirect(['create']);

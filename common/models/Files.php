@@ -32,10 +32,11 @@ class Files extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['file'], 'required'],
+            [['file','file_name'], 'required'],
             [['size', 'uid', 'created_at'], 'integer'],
             [['name', 'file', 'status'], 'string', 'max' => 255],
             [['type'], 'string', 'max' => 50],
+            [['file_name'], 'string', 'max' => 60],
         ];
     }
 
@@ -53,6 +54,8 @@ class Files extends \yii\db\ActiveRecord
             'uid' => '所有者',
             'status' => '状态',
             'created_at' => '添加时间',
+            'file_name'=>'文件名称',
+            'base_type'=> '文件基本类型',
         ];
     }
 }

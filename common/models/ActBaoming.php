@@ -59,4 +59,9 @@ class ActBaoming extends \yii\db\ActiveRecord
             'act_id' => 'act_id',
         ];
     }
+    
+    public function getActivity()
+    {
+        return $this->hasOne(Activity::className(), ['id' => 'act_id'])->asArray();
+    }
 }

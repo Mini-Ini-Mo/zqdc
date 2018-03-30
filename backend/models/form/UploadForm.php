@@ -12,11 +12,22 @@ use yii\base\Model;
 class UploadForm extends Model
 {
     public $file;
+    public $file_name;
 
     public function rules()
     {
         return [
           [['file'],'file','maxFiles' => 10,'maxSize' => 1024*1024*30],//10M
+          [['file_name'], 'required'],
+          [['file_name'], 'string', 'max' => 64],
+        ];
+    }
+    
+    public function attributeLabels()
+    {
+        return [
+            'file' => '文件',
+            'file_name'=>'文件名称',
         ];
     }
 }

@@ -1,0 +1,75 @@
+.debug{
+	border:1px solid #f00;
+}
+p{
+	margin:0 !important;
+}
+a:link    {text-decoration:none;color:#000;}
+a:visited {text-decoration:none;color:#000;}
+a:hover   {text-decoration:none;color:#000;}
+a:active  {text-decoration:none;color:#000;}
+video::-internal-media-controls-download-button {
+    display:none;
+}
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+video::-webkit-media-controls-panel {
+    width: calc(100% + 32px); 
+}
+.no-padding-l{
+	padding-left:0 !important;
+}
+.wrap > .container {
+    padding: 60px 15px 20px !important;
+}
+.lessons-class{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.lessons-class-one{
+	font-size:14px;
+	height:32px;
+	line-height:32px;
+}
+.lessons-icon{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	vertical-align: middle;
+	margin-right:5px;
+	background-image: url(/images/lessons/lessons_icon.png);
+}
+.lessons-item-one{
+	margin-bottom:20px;
+}
+.video-one > a{
+	color:#000;
+}
+.video-one > a:hover   {text-decoration:none;color:#000;}
+.video-one > a:active  {text-decoration:none;color:#000;}
+.video-one > a:hover   {text-decoration:none;color:#cc3;}
+.video-active{
+	color:#cc3 !important;
+}
+
+.lesson-cate{
+	padding:4px 0px;
+}
+.lesson-cate a{
+	color:#300;
+}
+.study-abroad-content{
+	padding:8px 0px 0px !important;
+}
+.study-abroad-content img{
+	max-width:100%;
+	text-align:center;
+}
+
+
+
+
+
+
+

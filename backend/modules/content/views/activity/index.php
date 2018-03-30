@@ -43,7 +43,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 return $res[$model->act_type];
             }],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} {settings}',
+                'buttons' => [
+                    'settings' => function ($url, $model, $key) {
+                        return  Html::a('<span class="glyphicon glyphicon-log-in"></span>', $url, ['title' => '设置','style'=>'margin:0px 6px;'] ) ;
+                    },
+                    ],
+                    'headerOptions' => ['width' => '180']
+            ],
         ],
     ]); ?>
 </div>
