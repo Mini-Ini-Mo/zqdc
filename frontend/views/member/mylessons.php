@@ -14,7 +14,7 @@ Yii::$app->name = '我的课程';
 
     <?php if (!empty($xs_actinfo)) :?>
     <h4 class="title">线上筑道 
-        <a href="">
+        <a href="<?php echo Url::toRoute(['lessonslist', 'type' => 3]);?>">
             <small class="pull-right glyphicon glyphicon-option-horizontal"></small>
         </a>
     </h4>
@@ -43,7 +43,7 @@ Yii::$app->name = '我的课程';
     
     <?php if (!empty($xx_actinfo)) :?>
     <h4 class="title">线下博纳 
-        <a href="">
+        <a href="<?php echo Url::toRoute(['lessonslist', 'type' => 4]);?>">
             <small class="pull-right glyphicon glyphicon-option-horizontal"></small>
         </a>
     </h4>
@@ -72,7 +72,7 @@ Yii::$app->name = '我的课程';
     
     <?php if (!empty($kc_actinfo)) :?>
     <h4 class="title">游学课程 
-        <a href="">
+        <a href="<?php echo Url::toRoute(['lessonslist', 'act_type' => 2]);?>">
             <small class="pull-right glyphicon glyphicon-option-horizontal"></small>
         </a>
     </h4>
@@ -101,7 +101,7 @@ Yii::$app->name = '我的课程';
     
     <?php if (!empty($lt_actinfo)) :?>
     <h4 class="title">论坛课程 
-        <a href="">
+        <a href="<?php echo Url::toRoute(['lessonslist', 'act_type' => 1]);?>">
             <small class="pull-right glyphicon glyphicon-option-horizontal"></small>
         </a>
     </h4>

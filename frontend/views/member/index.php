@@ -75,7 +75,7 @@ $this->title = '个人中心';
     <li class="page-header">
         <h5> 联系我们
             <small class="pull-right">
-                <a href="<?=Yii::$app->params['frontendUrl']?>?r=member">
+                <a href="<?=Yii::$app->params['frontendUrl']?>?r=member/contact">
                     <span class="glyphicon glyphicon-menu-right"></span>
                 </a>
             </small>
