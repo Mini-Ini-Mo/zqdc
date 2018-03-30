@@ -33,5 +33,6 @@ class SignatureAction extends Action
                 echo $echo;
             }
         }
+        \Yii::$app->end();
     }
 }
