@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -14,7 +15,6 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\LoginFormF;
 use yii\web\Response;
-
 /**
  * Site controller
  */
@@ -64,7 +64,80 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'sms' => [
+                'class' => 'common\components\Sms',
+                'mobile'=>Yii::$app->getRequest()->post('mobile'),
+                'sms_type'=>1,
+                'expires_in'=>Yii::$app->params['bm_expires_in'],
+            ],
+            'menu' => [
+                'class' => 'common\widgets\yii2_wechat\MenuAction',
+                'data' =>  array(
+                    'button'=>array(
+                        array(
+                            'name'=>'总裁课程',
+                            'sub_button'=>array(
+                                array(
+                                    'name'=>'文旅地产',
+                                    'type'=>'view',
+                                    'url'=>'http://online.zqbs.org/index.php/video/index?type=1',
+                                ),
+                                array(
+                                    'name'=>'财税',
+                                    'type'=>'view',
+                                    'url'=>'http://online.zqbs.org/index.php/video/index?type=2',
+                                ),
+                                array(
+                                    'name'=>'去库存',
+                                    'type'=>'view',
+                                    'url'=>'http://online.zqbs.org/index.php/video/index?type=3',
+                                ),
+                            ),
+                        ),
+                        array(
+                            'name'=>'中清学院',
+                            'sub_button'=>array(
+                                array(
+                                    'name'=>'项目合作',
+                                    'type'=>'view',
+                                    'url'=>'http://online.zqbs.org/index.php/ProjectCase/index',
+                                ),
+                                array(
+                                    'name'=>'线下课程',
+                                    'type'=>'view',
+                                    'url'=>'http://online.zqbs.org/index.php/course/index?type=1',
+                                ),
+                                array(
+                                    'name'=>'学院简介',
+                                    'type'=>'view',
+                                    'url'=>'http://online.zqbs.org/index.php/course/index?type=1',
+                                ),
+                                array(
+                                    'name'=>'我的',
+                                    'type'=>'view',
+                                    'url'=>'http://online.zqbs.org/index.php/Member/index',
+                                ),
+                            ),
+                        ),
+                    )
+                )
+            ],
+            'unified-order' => [
+                'class' => 'common\widgets\yii2_wechat\UnifiedOrderAction',
+                'totalFee' => 1,
+                'outTradeNo' => '2323232',
+                'notifyUrl' => 'http://f.zqdc.com/index.php?r=site/notify',
+                'body' => '商品'
+            ]
+
         ];
+    }
+
+    public function actionNotify()
+    {
+
+
+        return $this->render('notify');
     }
 
     /**

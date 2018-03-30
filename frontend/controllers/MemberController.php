@@ -9,7 +9,6 @@ use yii\filters\VerbFilter;
 use common\models\ActBaoming;
 use yii\data\Pagination;
 use common\models\Activity;
-use yii\web\Request;
 
 class MemberController extends Controller{    
     /**
@@ -141,6 +140,47 @@ class MemberController extends Controller{
                                           'kc_actinfo'=>$kc_actinfo,
                                           'xs_actinfo'=>$xs_actinfo,
                                           'xx_actinfo'=>$xx_actinfo]);
+    }
+    
+    /**
+     * {我的课程列表}
+     */
+    public function actionLessonslist($act_type)
+    {
+        $username = Yii::$app->user->identity->username;
+        /*$query = ActBaoming::find()
+        ->where(['phone' => $username])
+        ->joinwith([
+            'activity'=>function($q){
+                $q->andwhere(['act_type'=>$act_type]);
+            }
+        ]);
+        
+        $count = $query->count();
+        $pagination = new Pagination(['totalCount' => $count]);
+        $pagination->setPageSize(5);
+        
+        $list = $query->orderBy('id')
+        ->offset($pagination->offset)
+        ->limit($pagination->limit)
+        ->all();*/
+        $query = (new \yii\db\Query())
+        ->select('*')
+        ->from('zq_activity AS a')
+        ->leftJoin('zq_act_baoming AS ab','ab.act_id = a.id')
+        ->where(['a.act_type'=>$act_type])
+        ->andWhere(['ab.phone'=>$username]);
+        
+        $count = $query->count();
+        $pagination = new Pagination(['totalCount' => $count]);
+        $pagination->setPageSize(5);
+        
+        $list = $query->orderBy('a.id DESC')
+        ->offset($pagination->offset)
+        ->limit($pagination->limit)
+        ->All();
+        
+        return $this->render('lessonslist',['list'=>$list,'pagination'=>$pagination]);
     }
     
     /**
