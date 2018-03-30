@@ -183,8 +183,8 @@ $this->registerJs($js);
     <?= $form->field($model, 'join_num',$fieldOptions1)->textInput(['placeholder'=>"请输入参会人数"]) ?>
 
       <div class="form-group">
-        <div class="col-xs-offset-2 col-xs-9 text-center">
-          <?= Html::button('提交', ['class' => 'btn btn-default','type'=>'submit']) ?>
+        <div class="col-xs-12 text-center">
+          <?= Html::button('提交', ['class' => 'btn btn-info btn-sm','type'=>'submit','style'=>'width:100%;outline:none;']) ?>
         </div>
       </div>
       
