@@ -36,16 +36,13 @@ JS;
 
 $this->registerJs($js);
 
-$request = Yii::$app->getRequest();
-$lessID = $request->get('id',0);
-$vid = $request->get('vid',1);
-
 Yii::$app->name = '中清筑道';
     
 ?>
 <div class="block">
     <div class="text-center"><?php echo $info['topical'];?></div>
-    <video width="100%" height="230" controls id='player'>
+    
+    <video width="100%" height="230" controls id='player' style="margin:10px 0px 15px;">
         <source src="" type="video/mp4">您的浏览器不支持 视频播放。
     </video>
     
