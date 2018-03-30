@@ -7,7 +7,7 @@ use yii\web\Request;
 
 $this->registerCssFile('css/lessons_2.css');
 
-Yii::$app->name = '专题讲座';
+Yii::$app->name = '中清博纳';
     
 ?>
 <div class="block">

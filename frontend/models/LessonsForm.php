@@ -92,9 +92,9 @@ class LessonsForm extends Model
         $bm = (new \yii\db\Query())
         ->select(['id'])
         ->from('zq_act_baoming')
-        ->where(['act_id' => $this->act_id,'phone'=>$this->phone])
+        ->where(['act_id' => $this->act_id,'phone'=>$this->phone,'act_type'=>"{$this->act_type}"])
         ->one();
-        
+
         if (empty($bm)) {
             return false;
         }
@@ -106,11 +106,17 @@ class LessonsForm extends Model
     //验证码验证
     public function checkCaptcha($attribute,$params)
     {
+        if (\Yii::$app->controller->id == 'lessons') {
+            $sms_type = 2;
+        } else if (\Yii::$app->controller->id == 'study-abroad') {
+            $sms_type = 3;
+        }
+
         $record = Smslog::find()
-        ->where(['mobile' => $this->phone,'sms_type'=>2,'isuse'=>0])
+        ->where(['mobile' => $this->phone,'sms_type'=>$sms_type,'isuse'=>0])
         ->orderBy('id desc')
         ->one();
-        
+       
         if (!empty($record)) {  //已经发送了
             if(time() <= ($record['sendtime']+(\Yii::$app->params['bm_expires_in'])) ) {//发送的验证码还有效
                 if ($this->$attribute == $record['code']){
@@ -126,6 +132,7 @@ class LessonsForm extends Model
         }else {
             $this->addError($attribute, "验证码有误");
         }
+       
     }
    
 }

@@ -14,6 +14,7 @@ use yii\web\Response;
 use common\models\ActLessons;
 use yii\web\Request;
 use common\models\StudyAbroad;
+use frontend\models\LessonsForm;
 
 /**
  * Site controller
@@ -46,7 +47,7 @@ class StudyAbroadController extends Controller
             'sms' => [
                 'class' => 'common\components\Sms',
                 'mobile'=>Yii::$app->getRequest()->post('mobile'),
-                'sms_type'=>2,
+                'sms_type'=>3,
                 'expires_in'=>Yii::$app->params['bm_expires_in'],
             ],
         ];
@@ -86,6 +87,35 @@ class StudyAbroadController extends Controller
         }
         
         return $this->render('view',['info'=>$info]);
+    }
+    
+    public function actionBaoming()
+    {
+        $request = \Yii::$app->request;
+        $id = intval($request->get('id',0));
+        
+        if (empty($id)) {
+            return $this->redirect(['study-abroad/index']);
+        }
+
+        $model = new LessonsForm();
+        
+        if ($model->load($request->post())) {
+            //酌情处理啊
+            $model->act_type = 'study';
+        
+            if ($baoming = $model->baoming()) {
+                Yii::$app->getSession()->setFlash('bmresult', ['status'=>'success','msg'=>'报名成功！']);
+            } else {
+                Yii::$app->getSession()->setFlash('bmresult', ['status'=>'error','msg'=>'报名失败！']);
+            }
+            return $this->redirect(['study-abroad/baoming','id'=>$id]);
+        }
+        
+        return $this->render('baoming', [
+            'model' => $model,
+            'act_id'=>$id
+        ]);
     }
     
     

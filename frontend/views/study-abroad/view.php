@@ -8,7 +8,7 @@ use Symfony\Component\Finder\Comparator\DateComparator;
 
 $this->registerCssFile('css/lessons_2.css');
 
-Yii::$app->name = '专题讲座';
+Yii::$app->name = '中清游学';
     
 ?>
 <div class="block">
@@ -47,7 +47,10 @@ Yii::$app->name = '专题讲座';
         </tr>
         <tr>
             <td colspan="2" class="study-abroad-content"><?php echo $info['content'];?></td>
-        </tr>   
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center"><a class="btn btn-info btn-sm" style="color:#fff;width:100%;" href="<?= Url::toRoute(['baoming','id'=>$info['id']])?>">我要报名</a></td>
+        </tr>    
     </table>
 </div>
 
