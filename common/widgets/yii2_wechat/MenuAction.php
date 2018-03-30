@@ -26,6 +26,7 @@ class MenuAction extends Action
         if($data['errcode'] !=0 )
         {
             $official->setLogs('menu.txt', json_encode($data));
+            return;
         }
         return true;
         \Yii::$app->end();
