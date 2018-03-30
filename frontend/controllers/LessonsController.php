@@ -257,24 +257,26 @@ class LessonsController extends Controller
         
         return $this->render('ppt',['info'=>$info,'ppt'=>'upload/abc.pptx']);
     }
-    
-    
-    
+
     /**
      * 报名
-     * 
+     * 线下课程
      */
     public function actionBaoming()
     {
         $request = \Yii::$app->request;
-
         $id = intval($request->get('id',0));
+        
         if (empty($id)) {
             return $this->redirect(['lessons/index']);
         }
         
         $model = new LessonsForm();
+        
         if ($model->load($request->post())) {
+            //酌情处理啊 
+            $model->act_type = 'offline';
+            
             if ($baoming = $model->baoming()) {
                 Yii::$app->getSession()->setFlash('bmresult', ['status'=>'success','msg'=>'报名成功！']);
             } else {

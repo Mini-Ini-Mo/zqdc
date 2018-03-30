@@ -183,19 +183,11 @@ $this->registerJs($js);
     <?= $form->field($model, 'join_num',$fieldOptions1)->textInput(['placeholder'=>"请输入参会人数"]) ?>
 
       <div class="form-group">
-        <label for="captcha" class="col-xs-3 control-label text-right baoming-option">报名费用</label>
-        <div class="col-xs-9">
-            200元/人
-        </div>
-    </div>
-    
-      <div class="form-group">
-        <div class="col-xs-offset-2 col-xs-9 text-center">
-          <?= Html::button('提交', ['class' => 'btn btn-default','type'=>'submit']) ?>
+        <div class="col-xs-12 text-center">
+          <?= Html::button('提交', ['class' => 'btn btn-info btn-sm','type'=>'submit','style'=>'width:100%;outline:none;']) ?>
         </div>
       </div>
       
-    
     <?php ActiveForm::end(); ?> 
 
 </div>

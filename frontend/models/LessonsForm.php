@@ -29,6 +29,7 @@ class LessonsForm extends Model
     public $join_num;
     public $act_id;
     public $captcha;
+    public $act_type;
     
     /**
      * @inheritdoc
@@ -76,7 +77,8 @@ class LessonsForm extends Model
             $baoming->join_num = $this->join_num;
             $baoming->act_id = $this->act_id;
             $baoming->created_at = time();
-
+            $baoming->act_type = $this->act_type;
+            
             return $baoming->save() ? $baoming : null;
         }
         return false;   
