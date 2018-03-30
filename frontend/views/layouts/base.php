@@ -59,8 +59,8 @@ AppAsset::register($this);
             [
                 'label' => '中清商学',
                 'items' => [
-                    ['label' => '中清筑道（在线）', 'url' => ['/lessons/index']],
-                    ['label' => '中清博纳（线下）', 'url' => ['/lessons/offline']],
+                    ['label' => '中清筑道', 'url' => ['/lessons/index']],
+                    ['label' => '中清博纳', 'url' => ['/lessons/offline']],
                     ['label' => '中清游学', 'url' => ['/study-abroad/index']],
                     ['label' => '中清论坛', 'url' => ['/forum/index']],
                     
