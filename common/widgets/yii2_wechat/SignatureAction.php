@@ -15,10 +15,10 @@ class SignatureAction extends Action
 
     public function run()
     {
-        $signature = $_GET['signature'];
-        $timestamp = $_GET['timestamp'];
-        $nonce = $_GET['nonce'];
-        $echo = $_GET['echostr'];
+        $signature = isset($_GET['signature'])?$_GET['signature']:null;
+        $timestamp = isset($_GET['timestamp'])?$_GET['timestamp']:null;
+        $nonce = isset($_GET['nonce'])?$_GET['nonce']:null;
+        $echo = isset($_GET['echostr'])?$_GET['echostr']:null;
 
         if($signature) {
             $arr = [$this->token, $timestamp, $nonce];
