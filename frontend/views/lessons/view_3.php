@@ -32,7 +32,7 @@ JS;
 
 $this->registerJs($js);
 
-Yii::$app->name = '专题讲座';
+Yii::$app->name = '中清博纳';
     
 ?>
 <div class="block">

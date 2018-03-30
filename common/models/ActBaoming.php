@@ -39,6 +39,7 @@ class ActBaoming extends \yii\db\ActiveRecord
             [['contacts', 'position'], 'string', 'max' => 40],
             [['phone'], 'string', 'max' => 11],
             [['remark'], 'string', 'max' => 255],
+            [['act_type'],'string', 'max' => 10]
         ];
     }
 
