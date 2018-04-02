@@ -5,7 +5,7 @@ use yii\widgets\LinkPager;
 
 $this->registerCssFile('css/lessons_2.css');
 
-Yii::$app->name = '专题讲座';
+Yii::$app->name = '中清游学';
 ?>
 
 
