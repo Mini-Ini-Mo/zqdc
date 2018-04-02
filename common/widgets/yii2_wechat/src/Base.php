@@ -55,7 +55,7 @@ class Base
         //过滤数组，删除空值
         $arr = array_filter($arr);
         //如果数组中存在签名，删掉
-        if(isset($arr['sigin']))
+        if(isset($arr['sign']))
         {
             unset($arr['sign']);
         }
