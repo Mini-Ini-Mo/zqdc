@@ -118,6 +118,11 @@ class SiteController extends Controller
                                     'type'=>'view',
                                     'url'=>'http://online.zqbs.org/index.php/Member/index',
                                 ),
+                            	array(
+                            		'name'=>'测试支付',
+                            		'type'=>'view',
+                            		'url'=>'http://frontend.xuncaiwangcai.com/index.php?r=site/unified-order',
+                            	),
                             ),
                         ),
                     )
