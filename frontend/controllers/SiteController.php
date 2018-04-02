@@ -127,7 +127,7 @@ class SiteController extends Controller
                 'class' => 'common\widgets\yii2_wechat\UnifiedOrderAction',
                 'totalFee' => 1,
                 'outTradeNo' => '2323232',
-                'notifyUrl' => 'http://f.zqdc.com/index.php?r=site/notify',
+                'notifyUrl' => 'http://frontend.xuncaiwangcai.com/index.php?r=site/notify',
                 'body' => '商品'
             ],
             'signature' => [
