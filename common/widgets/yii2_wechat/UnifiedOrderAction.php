@@ -45,7 +45,7 @@ class UnifiedOrderAction extends Action
         $unified->setNotifyUrl($this->notifyUrl);
         $unified->setBody($this->body);
         $json = $unified->getJsonParams();
-		print_R($json);die;
+		print_R($json);
         return $this->controller->renderPartial('order',['json'=>$json]);
     }
 }
