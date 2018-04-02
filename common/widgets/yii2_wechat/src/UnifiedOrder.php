@@ -45,7 +45,7 @@ class UnifiedOrder extends Base
                 'pageage' => 'prepay_id='.$this->getPrepayID(),
                 'signType' => 'MD5'
             );
-            $arr['paySign'] = $this->setSign($arr);
+            $arr['paySign'] = $this->getSign($arr);
             return json_encode($arr);
         }
     }

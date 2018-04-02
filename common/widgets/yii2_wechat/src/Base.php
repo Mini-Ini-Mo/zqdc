@@ -62,7 +62,7 @@ class Base
         //数据按照键字典排序
         ksort($arr);
         //构建URL格式
-        $string = md5($this->arrToUrl($arr) . self::KEY);
+        $string = md5($this->arrToUrl($arr) .'&key='.self::KEY);
         //将字符串转化为大写
         return strtoupper($string);
     }
