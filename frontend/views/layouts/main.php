@@ -55,7 +55,7 @@ AppAsset::register($this);
             [
                'label' => '中清智库', 
                'items' => [
-                   ['label' => '智库案例', 'url' => ['/special/index']],
+                   //['label' => '智库案例', 'url' => ['/special/index']],
                    ['label' => '智库创新营', 'url' => ['/special/index']],
                ], 
                     'url' => ['/special/index']
