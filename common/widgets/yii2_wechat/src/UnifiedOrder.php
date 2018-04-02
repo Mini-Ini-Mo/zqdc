@@ -40,10 +40,11 @@ class UnifiedOrder extends Base
     {
         if($this->getPrepayID())
         {
+        	$time = time();
             $arr = array(
                 'appId' => self::APPID,
-                'nonceStr' => md5(time()),
-            	'timeStamp' => time(),
+                'nonceStr' => md5($time),
+            	'timeStamp' => "$time",
                 'pageage' => 'prepay_id='.$this->getPrepayID(),
                 'signType' => 'MD5'
             );
