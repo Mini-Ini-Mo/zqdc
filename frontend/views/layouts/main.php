@@ -40,10 +40,26 @@ AppAsset::register($this);
             //['label' => '首页', 'url' => ['/site/index']],
             //['label' => 'About', 'url' => ['/site/about']],
             ['label' => '个人中心', 'url' => ['/member/index']],
-            ['label' => '精英论坛', 'url' => ['/forum/index']],
-            ['label' => '专题讲座', 'url' => ['/lessons/index']],
+            [
+            'label' => '中清商学',
+            'items' => [
+                ['label' => '中清筑道', 'url' => ['/lessons/index']],
+                ['label' => '中清博纳', 'url' => ['/lessons/offline']],
+                ['label' => '中清游学', 'url' => ['/study-abroad/index']],
+                ['label' => '中清论坛', 'url' => ['/forum/index']],
+    
+            ],
+        ],
             ['label' => '新领袖', 'url' => ['/expert/index']],
-            ['label' => '专题', 'url' => ['/special/index']],
+            //['label' => '专题', 'url' => ['/special/index']],
+            [
+               'label' => '中清智库', 
+               'items' => [
+                   ['label' => '智库案例', 'url' => ['/special/index']],
+                   ['label' => '智库创新营', 'url' => ['/special/index']],
+               ], 
+                    'url' => ['/special/index']
+            ],
         ];
     }
     if (Yii::$app->user->isGuest) {
