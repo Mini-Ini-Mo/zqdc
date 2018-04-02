@@ -30,7 +30,6 @@ class UnifiedOrderAction extends Action
 
     public function run()
     {
-    	echo 2323;die;
         $unified = new UnifiedOrder();
         $unified->setTradeType($this->tradeType);
         if($this->tradeType == 'JSAPI'){
