@@ -88,6 +88,11 @@ class UnifiedOrder extends Base
             $this->setLogs('unifiedorder.txt',json_encode($arr).$arr['return_msg']);
             return;
         }
+        if($arr['result_code'] != 'SUCCESS')
+        {
+        	$this->setLogs('unifiedorder.txt', json_encode($arr).$arr['err_code_des']);
+        	return;
+        }
         if(!$this->chekSign($arr))
         {
             $this->setLogs('unifiedorder.txt','校验签名错误');
