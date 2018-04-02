@@ -35,7 +35,7 @@ class Authorization extends Base
     public function getAccessToken()
     {
         $code = $this->getCode();
-
+			
         $url = self::AUTHORIAZATIONACCESSTOKENURL.'appid='.self::APPID.'&secret='.self::APPSECRET.'&code='.$code.'&grant_type=authorization_code';
         $content = file_get_contents($url);
         return json_decode($content,true);
