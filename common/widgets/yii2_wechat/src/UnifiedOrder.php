@@ -38,14 +38,14 @@ class UnifiedOrder extends Base
      */
     public function getJsonParams()
     {
-        if($this->getPrepayID())
+        if($prepayID = $this->getPrepayID())
         {
         	$time = time();
             $arr = array(
                 'appId' => self::APPID,
                 'nonceStr' => md5($time),
             	'timeStamp' => "$time",
-                'pageage' => 'prepay_id='.$this->getPrepayID(),
+                'pageage' => 'prepay_id='.$prepayID,
                 'signType' => 'MD5'
             );
 			
