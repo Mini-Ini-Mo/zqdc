@@ -25,9 +25,10 @@ class Base
      * @var string
      */
     const APPID = 'wx1270ac12dd6d8669';
+    const APPSECRET = 'efa773a45fd83831b10e86cec23abfdb';
+    
     const MCHID = '1484463302';
     const KEY = 'wfeifeifjeiwieeTERERfifjififefef';
-    const APPSECRET = 'efa773a45fd83831b10e86cec23abfdb';
 
     const SSLCERT_PATH = './wechat/cert/apiclient_cert.pem';
     const SSLKEY_PATH = './wechat/cert/apiclient_key.pem';
