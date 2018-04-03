@@ -45,7 +45,7 @@ class UnifiedOrder extends Base
                 'appId' => self::APPID,
                 'nonceStr' => md5($time),
             	'timeStamp' => "$time",
-                'pageage' => 'prepay_id='.$prepayID,
+                'package' => 'prepay_id='.$prepayID,
                 'signType' => 'MD5'
             );
 			
