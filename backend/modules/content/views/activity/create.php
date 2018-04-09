@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Activity */
 
-$this->title = '新增活动';
-$this->params['breadcrumbs'][] = ['label' => '活动列表', 'url' => ['index']];
+$this->title = '新增-中清论坛';
+$this->params['breadcrumbs'][] = ['label' => '中清论坛', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="activity-create">

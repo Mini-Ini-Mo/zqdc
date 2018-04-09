@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ActLessCate */
 
-$this->title = 'Update Act Less Cate: {nameAttribute}';
+$this->title = '编辑-商学类目:'.$model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Act Less Cates', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';

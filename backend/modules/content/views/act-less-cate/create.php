@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ActLessCate */
 
-$this->title = 'Create Act Less Cate';
+$this->title = '新增-商学类目';
 $this->params['breadcrumbs'][] = ['label' => 'Act Less Cates', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

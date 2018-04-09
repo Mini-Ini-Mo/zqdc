@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\ActLessons */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = '新增线上课程';
+$this->title = '中清助道';
 
 ?>
 

@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ActLessons */
 
-$this->title = 'Create Act Lessons';
+$this->title = '新增-中清博纳';
 $this->params['breadcrumbs'][] = ['label' => 'Act Lessons', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

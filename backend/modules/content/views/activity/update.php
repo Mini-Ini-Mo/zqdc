@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Activity */
 
-$this->title = '修改';
-$this->params['breadcrumbs'][] = ['label' => '活动列表', 'url' => ['index']];
+$this->title = '编辑-中清论坛';
+$this->params['breadcrumbs'][] = ['label' => '中清论坛', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

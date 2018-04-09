@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ActLessons */
 
-$this->title = 'Update Act Lessons: {nameAttribute}';
+$this->title = '编辑-中清博纳: '.$model->topical;
 $this->params['breadcrumbs'][] = ['label' => 'Act Lessons', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
