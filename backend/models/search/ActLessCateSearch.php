@@ -5,12 +5,12 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\StudyAbroad;
+use common\models\ActLessCate;
 
 /**
- * StudyAbroadSearch represents the model behind the search form of `common\models\StudyAbroad`.
+ * ActLessCateSearch represents the model behind the search form of `common\models\ActLessCate`.
  */
-class StudyAbroadSearch extends StudyAbroad
+class ActLessCateSearch extends ActLessCate
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class StudyAbroadSearch extends StudyAbroad
     public function rules()
     {
         return [
-            [['id', 'begin_time',], 'integer'],
-            [['destination','cost', 'status', 'intro', 'content','title'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'type'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class StudyAbroadSearch extends StudyAbroad
      */
     public function search($params)
     {
-        $query = StudyAbroad::find();
+        $query = ActLessCate::find();
 
         // add conditions that should always apply here
 
@@ -60,15 +60,10 @@ class StudyAbroadSearch extends StudyAbroad
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'begin_time' => $this->begin_time,
-            'destination' => $this->destination,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'cost', $this->cost])
-            ->andFilterWhere(['like', 'status', $this->status])
-            ->andFilterWhere(['like', 'intro', $this->intro])
-            ->andFilterWhere(['like', 'content', $this->content]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'type', $this->type]);
 
         return $dataProvider;
     }

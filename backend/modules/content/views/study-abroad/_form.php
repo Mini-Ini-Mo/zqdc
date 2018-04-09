@@ -12,8 +12,10 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'destination')->textInput(['maxlength' => true])->hint('只需要填写国家即可') ?>
-
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true])?>
+    
+    <?= $form->field($model, 'destination')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\ActLessCate::category(3),'id','name'),['prompt'=>'请选择']) ?>
+    
     <?=$form->field($model, 'thumb')->widget('common\widgets\file_upload\FileUpload',['config'=>['suggest'=>"仅支持文件格式为jpg、jpeg、png以及gif<br>大小在1MB以下的文件<br/>"]]); ?>
 	
 	

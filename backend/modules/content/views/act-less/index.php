@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\StudyAbroadSearch */
+/* @var $searchModel app\models\search\ActLessonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '中清游学';
+$this->title = '中清博纳';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="study-abroad-index">
+<div class="act-lessons-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,22 +26,29 @@ $this->params['breadcrumbs'][] = $this->title;
            /*  ['class' => 'yii\grid\SerialColumn'], */
 
             'id',
-            'title',
-            ['attribute'=>'destination','value'=>function($model){
-                $res = \yii\helpers\ArrayHelper::map(\common\models\ActLessCate::category(3),'id','name');
-                return $res[$model->destination];
+            'topical',
+            
+            ['attribute'=>'less_cate','value'=>function($model){
+                $res = \yii\helpers\ArrayHelper::map(\common\models\ActLessCate::category(2),'id','name');
+                return $res[$model->less_cate];
             }],
-            ['attribute'=>'begin_time','value'=>function($model){
-                return date('Y-m-d',strtotime($model->begin_time));
-            }],
-            'cost',
+            
+            //'thumb',
+            //'intro',
+            //'content:ntext',
+            //'expert_id',
+            'act_begin_time',
+            'act_end_time',
+            //'created_at',
+            //'status',
+            //'less_mode',
+            //'source_type',
+            //'addr',
+            //'cost',
             ['attribute'=>'status','value'=>function($model){
                 $res = [1=>'公开',2=>'不公开'];
                 return $res[$model->status];
             }],
-            //'intro',
-            //'content:ntext',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

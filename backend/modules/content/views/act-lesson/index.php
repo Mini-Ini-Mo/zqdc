@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\search\ActLessonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Act Lessons';
+$this->title = '中清助道';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="act-lessons-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('新增课程', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新增', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,9 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'topical',
             //'less_cate',
-            
+
             ['attribute'=>'less_cate','value'=>function($model){
-                $res = \yii\helpers\ArrayHelper::map(\common\models\ActLessType::find()->all(),'id','name');
+                $res = \yii\helpers\ArrayHelper::map(\common\models\ActLessCate::category(1),'id','name');
                 return $res[$model->less_cate];
             }],
             
@@ -46,15 +46,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 return $res[$model->status];
             }],
             //'less_mode',
-            ['attribute'=>'less_mode','value'=>function($model){
-                $res = [1=>'线上',2=>'线下'];
-                return $res[$model->less_mode];
-            }],
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update} {delete} {settings}',
+                'template' => '{view} {update} {update_offline} {delete} {settings}',
+                
                 'buttons' => [
+                    'update' => function ($url, $model, $key) {
+                    
+                        if ($model->less_mode == 1) {
+                            return  Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['title' => '设置','style'=>'margin:0px 6px;'] ) ;
+                        }
+                    },
+                    'update_offline' => function ($url, $model, $key) {
+                    
+                        if ($model->less_mode == 2) {
+                            return  Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['title' => '设置','style'=>'margin:0px 6px;'] ) ;
+                        }
+                    },
+                    
                     'settings' => function ($url, $model, $key) {
                         return  Html::a('<span class="glyphicon glyphicon-log-in"></span>', $url, ['title' => '设置','style'=>'margin:0px 6px;'] ) ;
                     },
