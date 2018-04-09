@@ -36,7 +36,7 @@ class ActLessons extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['topical', 'act_begin_time', 'act_end_time'], 'required'],
+            [['topical'], 'required'],
             [['less_cate', 'expert_id', 'created_at','status','less_mode','source_type'], 'integer'],
             [['content'], 'string'],
             [['act_begin_time', 'act_end_time'], 'safe'],
