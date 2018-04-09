@@ -84,7 +84,8 @@ class LessonsController extends Controller
         
         $cate = (new \yii\db\Query())
         ->select(['id','name'])
-        ->from('zq_act_less_type')
+        ->from('zq_act_less_cate')
+        ->where(['type'=>1])
         ->all();
 
         return $this->render('index_2',['list'=>$list,'pagination'=>$pagination,'cate'=>$cate]);
@@ -118,7 +119,8 @@ class LessonsController extends Controller
         
         $cate = (new \yii\db\Query())
         ->select(['id','name'])
-        ->from('zq_act_less_type')
+        ->from('zq_act_less_cate')
+        ->where(['type'=>2])
         ->all();
         
         return $this->render('offline',['list'=>$list,'pagination'=>$pagination,'cate'=>$cate]);

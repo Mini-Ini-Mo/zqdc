@@ -14,10 +14,11 @@ Yii::$app->name = '中清筑道';
     <?php 
         foreach ($cate as $val) {
     ?>
-    <div class="col-xs-4 col-sm-4 text-center lesson-cate"><a href="<?php echo Url::toRoute(['index','less_cate'=>$val['id']])?>"><span class="lessons-icon"></span><?php echo $val['name'];?></a></div>
+    <div class="col-xs-4 col-sm-4 lesson-cate"><a href="<?php echo Url::toRoute(['index','less_cate'=>$val['id']])?>"><span class="lessons-icon"></span><?php echo $val['name'];?></a></div>
     <?php 
         }
     ?>
+    <div class="col-xs-4 col-sm-4 lesson-cate"><a href="<?php echo Url::toRoute(['index'])?>"><span class="lessons-icon"></span>全部</a></div>
     </div> 
 </div>
 
