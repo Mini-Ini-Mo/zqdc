@@ -118,6 +118,11 @@ class SiteController extends Controller
                                     'type'=>'view',
                                     'url'=>'http://online.zqbs.org/index.php/Member/index',
                                 ),
+                            	array(
+                            		'name'=>'测试支付',
+                            		'type'=>'view',
+                            		'url'=>'http://frontend.xuncaiwangcai.com/index.php?r=site/unified-order',
+                            	),
                             ),
                         ),
                     )
@@ -127,7 +132,7 @@ class SiteController extends Controller
                 'class' => 'common\widgets\yii2_wechat\UnifiedOrderAction',
                 'totalFee' => 1,
                 'outTradeNo' => '2323232',
-                'notifyUrl' => 'http://f.zqdc.com/index.php?r=site/notify',
+                'notifyUrl' => 'http://frontend.xuncaiwangcai.com/index.php?r=site/notify',
                 'body' => '商品'
             ],
             'signature' => [

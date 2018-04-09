@@ -35,7 +35,7 @@ class Authorization extends Base
     public function getAccessToken()
     {
         $code = $this->getCode();
-
+			
         $url = self::AUTHORIAZATIONACCESSTOKENURL.'appid='.self::APPID.'&secret='.self::APPSECRET.'&code='.$code.'&grant_type=authorization_code';
         $content = file_get_contents($url);
         return json_decode($content,true);
@@ -47,7 +47,7 @@ class Authorization extends Base
     {
         if(!isset($_GET['code']))
         {
-            $redirect_uri = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            $redirect_uri = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
             $url = self::CODEURL.'appid='.self::APPID.'&redirect_uri='.$redirect_uri.'&response_type=code&scope='.$this->scope.'&state=STATE#wechat_redirect';
             header('location:'.$url);
         }else{

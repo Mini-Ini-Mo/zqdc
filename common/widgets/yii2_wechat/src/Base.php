@@ -25,9 +25,10 @@ class Base
      * @var string
      */
     const APPID = 'wx1270ac12dd6d8669';
+    const APPSECRET = 'efa773a45fd83831b10e86cec23abfdb';
+    
     const MCHID = '1484463302';
     const KEY = 'wfeifeifjeiwieeTERERfifjififefef';
-    const APPSECRET = 'efa773a45fd83831b10e86cec23abfdb';
 
     const SSLCERT_PATH = './wechat/cert/apiclient_cert.pem';
     const SSLKEY_PATH = './wechat/cert/apiclient_key.pem';
@@ -54,14 +55,14 @@ class Base
         //过滤数组，删除空值
         $arr = array_filter($arr);
         //如果数组中存在签名，删掉
-        if(isset($arr['sigin']))
+        if(isset($arr['sign']))
         {
             unset($arr['sign']);
         }
         //数据按照键字典排序
         ksort($arr);
         //构建URL格式
-        $string = md5($this->arrToUrl($arr) . self::KEY);
+        $string = md5($this->arrToUrl($arr) .'&key='.self::KEY);
         //将字符串转化为大写
         return strtoupper($string);
     }

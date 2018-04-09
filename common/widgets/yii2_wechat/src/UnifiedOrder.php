@@ -29,7 +29,8 @@ class UnifiedOrder extends Base
 
     //构建json参数
     /*
-     * "appId":"wx2421b1c4370ec43b",//公众号名称，由商户传入"timeStamp":"1395712654",//时间戳，自1970年以来的秒数
+     * "appId":"wx2421b1c4370ec43b",//公众号名称，由商户传入
+     * "timeStamp":"1395712654",//时间戳，自1970年以来的秒数
      * "nonceStr":"e61463f8efa94090b1f366cccfbbb444", //随机串
      * "package":"prepay_id=u802345jgfjsdfgsdg888",
      * "signType":"MD5",//微信签名方式：
@@ -37,15 +38,18 @@ class UnifiedOrder extends Base
      */
     public function getJsonParams()
     {
-        if($this->getPrepayID())
+        if($prepayID = $this->getPrepayID())
         {
+        	$time = time();
             $arr = array(
                 'appId' => self::APPID,
-                'nonceStr' => md5(time()),
-                'pageage' => 'prepay_id='.$this->getPrepayID(),
+                'nonceStr' => md5($time),
+            	'timeStamp' => "$time",
+                'package' => 'prepay_id='.$prepayID,
                 'signType' => 'MD5'
             );
-            $arr['paySign'] = $this->setSign($arr);
+			
+            $arr['paySign'] = $this->getSign($arr);
             return json_encode($arr);
         }
     }
@@ -85,6 +89,11 @@ class UnifiedOrder extends Base
         {
             $this->setLogs('unifiedorder.txt',json_encode($arr).$arr['return_msg']);
             return;
+        }
+        if($arr['result_code'] != 'SUCCESS')
+        {
+        	$this->setLogs('unifiedorder.txt', json_encode($arr).$arr['err_code_des']);
+        	return;
         }
         if(!$this->chekSign($arr))
         {

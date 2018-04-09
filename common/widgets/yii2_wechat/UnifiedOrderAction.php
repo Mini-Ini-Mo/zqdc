@@ -30,19 +30,21 @@ class UnifiedOrderAction extends Action
 
     public function run()
     {
+    	$authorization = new Authorization();
+    	$openID = $authorization->getOpenID();
+    	if(!$openID)
+    		return;
+    	
         $unified = new UnifiedOrder();
         $unified->setTradeType($this->tradeType);
         if($this->tradeType == 'JSAPI'){
-            $authorization = new Authorization();
-            $openID = $authorization->getOpenID();
-            $unified->setOpenID($openID);
+        	$unified->setOpenID($openID);
         }
         $unified->setTotalFee($this->totalFee);
         $unified->setOutTradeNo($this->outTradeNo);
         $unified->setNotifyUrl($this->notifyUrl);
         $unified->setBody($this->body);
         $json = $unified->getJsonParams();
-
         return $this->controller->renderPartial('order',['json'=>$json]);
     }
 }

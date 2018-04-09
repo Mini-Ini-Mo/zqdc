@@ -50,7 +50,15 @@ AppAsset::register($this);
             ],
         ],
         ['label' => '新领袖', 'url' => ['/expert/index']],
-        ['label' => '中清智库', 'url' => ['/special/index']],
+        //['label' => '专题', 'url' => ['/special/index']],
+        [
+            'label' => '中清智库',
+            'items' => [
+                //['label' => '智库案例', 'url' => ['/special/index']],
+                ['label' => '智库创新营', 'url' => ['/special/index']],
+    
+            ],
+        ],
     ];
     
     if (!Yii::$app->user->isGuest) {
