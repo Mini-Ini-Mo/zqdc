@@ -21,7 +21,7 @@ Yii::$app->name = '中清游学';
     <table class="table">
          <tr>
             <td>游学地点：</td>
-            <td><?php echo $info['destination'];?></td>
+            <td><?php echo $info['name'];?></td>
         </tr>
         <tr>
             <td>游学时间：</td>

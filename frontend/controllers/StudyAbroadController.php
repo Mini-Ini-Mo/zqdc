@@ -68,18 +68,21 @@ class StudyAbroadController extends Controller
         //设置每页数量
         $pagination->setPageSize(4);
         $list = $query->orderBy('id desc')
+        ->leftJoin('zq_act_less_cate', 'zq_act_less_cate.id = zq_study_abroad.destination')
         ->offset($pagination->offset)
         ->limit($pagination->limit)
         ->all();
+
         return $this->render('index',['list'=>$list,'pagination'=>$pagination,]);
     }
     
     public function actionView($id)
     {
         $info = (new \yii\db\Query())
-        ->select(['id', 'destination','thumb','begin_time' ,'cost','intro','content','days'])
-        ->from('zq_study_abroad')
-        ->where('id = :id and status = 1',[':id' => $id])
+        ->select(['s.id', 'destination','c.name','thumb','begin_time' ,'cost','intro','content','days'])
+        ->from('zq_study_abroad as s')
+        ->leftJoin('zq_act_less_cate as c','c.id = s.destination')
+        ->where('s.id = :id and status = 1',[':id' => $id])
         ->one();
 
         if (empty($info)) {  //请求有误,重定向

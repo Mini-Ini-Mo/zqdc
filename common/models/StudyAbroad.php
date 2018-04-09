@@ -57,4 +57,9 @@ class StudyAbroad extends \yii\db\ActiveRecord
             'thumb'=>'活动简图',
         ];
     }
+    
+    public function getCate()
+    {
+        return $this->hasOne(StudyAbroad::className(), ['id' => 'customer_id']);
+    }
 }
