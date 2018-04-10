@@ -30,10 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'thumb',
             //'intro',
             //'content:ntext',
-            ['attribute'=>'expert_id','value'=>function($model){
+           /*  ['attribute'=>'expert_id','value'=>function($model){
                 $res = \yii\helpers\ArrayHelper::map(\common\models\Expert::find()->all(),'id','name');
                 return $res[$model->expert_id];
-            }],
+            }], */
             'act_begin_time',
             'act_end_time',
             //'created_at',
