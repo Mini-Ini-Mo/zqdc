@@ -47,7 +47,7 @@ class Activity extends \yii\db\ActiveRecord
         return [
             [['topical', 'act_begin_time', 'act_end_time'], 'required'],
             [['content'], 'string'],
-            [['expert_id', 'created_at', 'status', 'act_type','less_type'], 'integer'],
+            [['expert_id', 'created_at', 'status', 'act_type'], 'integer'],
             [['act_begin_time', 'act_end_time'], 'safe'],
             [['topical'], 'string', 'max' => 60],
             [['thumb'], 'string', 'max' => 100],
@@ -72,7 +72,6 @@ class Activity extends \yii\db\ActiveRecord
             'created_at' => '创建时间',
             'status' => '状态',
             'act_type' => '活动类型',
-            'less_type'=> '课程类型'
         ];
     }
     
