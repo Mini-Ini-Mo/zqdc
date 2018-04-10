@@ -100,7 +100,6 @@ class SiteController extends Controller
                                 ),
                             ),
                         ),
-                    ),
                     array(
                         'name'=>'中清智库',
                         'sub_button'=>array(
