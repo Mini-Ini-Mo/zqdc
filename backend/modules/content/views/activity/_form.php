@@ -12,16 +12,14 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'act_type')->dropDownList([1=>'论坛',2=>'讲座'],['prompt'=>'请选择'])->label(false) ?>
-
+    <?= $form->field($model, 'act_type')->hiddenInput(['value'=>'1'])->label(false) ?>
+    
     <?= $form->field($model, 'topical')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'thumb')->widget('common\widgets\file_upload\FileUpload',['config'=>['suggest'=>"仅支持文件格式为jpg、jpeg、png以及gif<br>大小在1MB以下的文件<br/>建议尺寸：160*100px"]]); ?>
 
     <?= $form->field($model, 'expert_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\Expert::find()->all(),'id','name'),['prompt'=>'请选择']) ?>
 
-    <?= $form->field($model, 'less_type')->radioList(['1'=>'视频','2'=>'音频']) ?>
-    
     <?= $form->field($model, 'intro')->textarea(['rows' => 6]) ?>
     
     <?= $form->field($model, 'content')->widget('common\widgets\ueditor\Ueditor',[
