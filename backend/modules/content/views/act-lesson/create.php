@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ActLessons */
 
-$this->title = 'Create Act Lessons';
-$this->params['breadcrumbs'][] = ['label' => 'Act Lessons', 'url' => ['index']];
+$this->title = '新增课程';
+$this->params['breadcrumbs'][] = ['label' => '课程管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="act-lessons-create">

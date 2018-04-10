@@ -31,10 +31,9 @@ class StudyAbroad extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['destination', 'begin_time','days','thumb'], 'required'],
-            [['status','days'], 'integer'],
-            [['content','begin_time','thumb'], 'string'],
-            [['destination'], 'string', 'max' => 40],
+            [['title', 'begin_time','days','thumb'], 'required'],
+            [['status','days','destination'], 'integer'],
+            [['content','begin_time','thumb','title'], 'string'],
             [['cost'], 'string', 'max' => 100],
             [['intro'], 'string', 'max' => 255],
         ];
@@ -47,6 +46,7 @@ class StudyAbroad extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'title'=>'游学标题',
             'destination' => '游学目的地',
             'begin_time' => '开始时间',
             'cost' => '费用说明',
@@ -56,5 +56,10 @@ class StudyAbroad extends \yii\db\ActiveRecord
             'days'=>'游学天数',
             'thumb'=>'活动简图',
         ];
+    }
+    
+    public function getCate()
+    {
+        return $this->hasOne(StudyAbroad::className(), ['id' => 'customer_id']);
     }
 }

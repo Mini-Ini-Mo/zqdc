@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\StudyAbroad */
 
-$this->title = 'Create Study Abroad';
+$this->title = '新增-中清游学';
 $this->params['breadcrumbs'][] = ['label' => 'Study Abroads', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

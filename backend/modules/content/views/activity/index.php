@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\search\ActivitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Activities';
+$this->title = '中清论坛';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="activity-index">
@@ -45,12 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update} {delete} {settings}',
-                'buttons' => [
+                'template' => '{view} {update} {delete} ',
+/*                 'buttons' => [
                     'settings' => function ($url, $model, $key) {
                         return  Html::a('<span class="glyphicon glyphicon-log-in"></span>', $url, ['title' => '设置','style'=>'margin:0px 6px;'] ) ;
                     },
-                    ],
+                ], */
                     'headerOptions' => ['width' => '180']
             ],
         ],

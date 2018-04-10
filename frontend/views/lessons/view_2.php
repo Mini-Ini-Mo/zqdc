@@ -35,9 +35,12 @@ $js = <<<JS
     {
         player.src = "$resourceUrl"+$(".video-one-a:first").data('src');
         $(".video-one-a:first").addClass('video-active');
+        player.autoplay=false;
+        /*   
         player.oncanplay = function (){
             player.play();
         };
+        */
     }
             
     if ($(".video-one-a").length > 0) {

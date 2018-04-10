@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\ActLessType */
+/* @var $model common\models\ActLessons */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Act Less Types', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Act Lessons', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="act-less-type-view">
+<div class="act-lessons-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,7 +29,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+            'topical',
+            'less_cate',
+            'thumb',
+            'intro',
+            'content:ntext',
+            'expert_id',
+            'act_begin_time',
+            'act_end_time',
+            'created_at',
+            'status',
+            'less_mode',
+            'source_type',
+            'addr',
+            'cost',
         ],
     ]) ?>
 

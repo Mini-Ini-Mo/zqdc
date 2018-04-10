@@ -5,12 +5,12 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\ActLessType;
+use common\models\ActLessCate;
 
 /**
- * ActLessTypeSearch represents the model behind the search form of `common\models\ActLessType`.
+ * ActLessCateSearch represents the model behind the search form of `common\models\ActLessCate`.
  */
-class ActLessTypeSearch extends ActLessType
+class ActLessCateSearch extends ActLessCate
 {
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class ActLessTypeSearch extends ActLessType
     {
         return [
             [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['name', 'type'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ActLessTypeSearch extends ActLessType
      */
     public function search($params)
     {
-        $query = ActLessType::find();
+        $query = ActLessCate::find();
 
         // add conditions that should always apply here
 
@@ -62,7 +62,8 @@ class ActLessTypeSearch extends ActLessType
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'type', $this->type]);
 
         return $dataProvider;
     }

@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\ActLessType */
+/* @var $model common\models\ActLessons */
 
-$this->title = 'Create Act Less Type';
-$this->params['breadcrumbs'][] = ['label' => 'Act Less Types', 'url' => ['index']];
+$this->title = '新增-中清博纳';
+$this->params['breadcrumbs'][] = ['label' => 'Act Lessons', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="act-less-type-create">
+<div class="act-lessons-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

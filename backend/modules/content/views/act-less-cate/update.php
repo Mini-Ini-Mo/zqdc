@@ -3,14 +3,14 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\ActLessType */
+/* @var $model common\models\ActLessCate */
 
-$this->title = 'Update Act Less Type: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Act Less Types', 'url' => ['index']];
+$this->title = '编辑-商学类目:'.$model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Act Less Cates', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="act-less-type-update">
+<div class="act-less-cate-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

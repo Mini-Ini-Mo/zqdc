@@ -1,18 +1,19 @@
 <?php
 
-namespace app\modules\content\controllers;
+namespace backend\controllers;
 
 use Yii;
-use common\models\ActLessType;
-use app\models\search\ActLessTypeSearch;
+use common\models\User;
+use app\models\search\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\form\SignupForm;
 
 /**
- * ActLessTypeController implements the CRUD actions for ActLessType model.
+ * UserController implements the CRUD actions for User model.
  */
-class ActLessTypeController extends Controller
+class UserController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +31,12 @@ class ActLessTypeController extends Controller
     }
 
     /**
-     * Lists all ActLessType models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ActLessTypeSearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class ActLessTypeController extends Controller
     }
 
     /**
-     * Displays a single ActLessType model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -56,27 +57,38 @@ class ActLessTypeController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    
+    
+    public function actionSignup()
+    {
+        
+    }
 
     /**
-     * Creates a new ActLessType model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ActLessType();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
         }
-
-        return $this->render('create', [
+        
+        return $this->render('signup', [
             'model' => $model,
         ]);
+          
     }
 
     /**
-     * Updates an existing ActLessType model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +108,7 @@ class ActLessTypeController extends Controller
     }
 
     /**
-     * Deletes an existing ActLessType model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +122,15 @@ class ActLessTypeController extends Controller
     }
 
     /**
-     * Finds the ActLessType model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ActLessType the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ActLessType::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 

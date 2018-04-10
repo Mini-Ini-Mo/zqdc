@@ -41,6 +41,7 @@ class ActLessonSearch extends ActLessons
      */
     public function search($params)
     {
+
         $query = ActLessons::find();
 
         // add conditions that should always apply here
@@ -65,6 +66,7 @@ class ActLessonSearch extends ActLessons
             'act_begin_time' => $this->act_begin_time,
             'act_end_time' => $this->act_end_time,
             'created_at' => $this->created_at,
+            'less_mode' => $this->less_mode,
         ]);
 
         $query->andFilterWhere(['like', 'topical', $this->topical])

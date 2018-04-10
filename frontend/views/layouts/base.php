@@ -38,7 +38,7 @@ AppAsset::register($this);
     ]);
 
     $menuItems = [
-        ['label' => '首页', 'url' => Yii::$app->homeUrl],
+        /* ['label' => '首页', 'url' => Yii::$app->homeUrl], */
         [
             'label' => '中清商学',
             'items' => [
@@ -49,7 +49,6 @@ AppAsset::register($this);
     
             ],
         ],
-        ['label' => '新领袖', 'url' => ['/expert/index']],
         //['label' => '专题', 'url' => ['/special/index']],
         [
             'label' => '中清智库',
@@ -59,6 +58,7 @@ AppAsset::register($this);
     
             ],
         ],
+        ['label' => '新领袖', 'url' => ['/expert/index']],
     ];
     
     if (!Yii::$app->user->isGuest) {
