@@ -44,6 +44,16 @@ class User extends ActiveRecord implements IdentityInterface
             TimestampBehavior::className(),
         ];
     }
+    
+    public function attributeLabels()
+    {
+        return [
+            
+            'username' => '用户名',
+            'email'=>'邮箱',
+            'password'=>'密码',
+        ];
+    }
 
     /**
      * {@inheritdoc}

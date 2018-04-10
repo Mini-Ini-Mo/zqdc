@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\ActLessType */
+/* @var $model common\models\User */
 
-$this->title = 'Create Act Less Type';
-$this->params['breadcrumbs'][] = ['label' => 'Act Less Types', 'url' => ['index']];
+$this->title = 'Create User';
+$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="act-less-type-create">
+<div class="user-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
