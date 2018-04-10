@@ -30,7 +30,7 @@ AppAsset::register($this);
 <div class="wrap">
 
     
-    <div class="container" style="padding:10px 15px 20px;">
+    <div class="container" style="padding:10px 15px 20px !important;">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
