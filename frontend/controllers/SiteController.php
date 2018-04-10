@@ -131,6 +131,7 @@ class SiteController extends Controller
                             ),
                         ),
                     ),
+                    )
                 )
             ],
             'unified-order' => [
