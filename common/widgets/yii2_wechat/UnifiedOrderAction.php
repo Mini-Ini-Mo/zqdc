@@ -30,6 +30,9 @@ class UnifiedOrderAction extends Action
 
     public function run()
     {
+        if(\Yii::$app->user->isGuest){
+            return Url::toRoute(['site/login']);
+        }
     	$authorization = new Authorization();
     	$openID = $authorization->getOpenID();
     	if(!$openID)
@@ -45,6 +48,24 @@ class UnifiedOrderAction extends Action
         $unified->setNotifyUrl($this->notifyUrl);
         $unified->setBody($this->body);
         $json = $unified->getJsonParams();
+
+        $model = new \common\widgets\yii2_wechat\models\Order();
+
+        $model->attributes = [
+            'uid' => \Yii::$app()->user->getId(),
+            'trade_type' => $this->tradeType,
+            'total_fee' => $this->totalFee,
+            'out_trade_no' => $this->outTradeNo,
+            'created_at' => time(),
+        ];
+
+        $model->save();
+
         return $this->controller->renderPartial('order',['json'=>$json]);
+    }
+
+    public function init()
+    {
+        $this->outTradeNo = date('YmdHis',time()).rand(0,999);
     }
 }
